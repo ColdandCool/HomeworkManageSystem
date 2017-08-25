@@ -6,14 +6,13 @@
         version="3.0"
         metadata-complete="true">
 
-    <display-name>iutils-admin</display-name>
+    <display-name>homework</display-name>
 
     <!-- Spring start  -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
         	classpath:spring-config.xml
-        	classpath:spring-mvc.xml
         </param-value>
     </context-param>
     <listener>
