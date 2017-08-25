@@ -15,28 +15,28 @@
   <function>
     <description>URL编码</description>
     <name>urlEncode</name>
-    <function-class>cn.iutils.common.utils.Encodes</function-class>
+    <function-class>com.david.common.utils.Encodes</function-class>
     <function-signature>java.lang.String urlEncode(java.lang.String)</function-signature>
     <example>${fns:urlEncode(part)}</example>  
   </function>
   <function>
     <description>URL解码</description>
     <name>urlDecode</name>
-    <function-class>cn.iutils.common.utils.Encodes</function-class>
+    <function-class>com.david.common.utils.Encodes</function-class>
     <function-signature>java.lang.String urlDecode(java.lang.String)</function-signature>
     <example>${fns:urlDecode(part)}</example>  
   </function>
   <function>
     <description>HTML编码</description>
     <name>escapeHtml</name>
-    <function-class>cn.iutils.common.utils.Encodes</function-class>
+    <function-class>com.david.common.utils.Encodes</function-class>
     <function-signature>java.lang.String escapeHtml(java.lang.String)</function-signature>
     <example>${fns:escapeHtml(html)}</example>  
   </function>
   <function>
     <description>HTML解码</description>
     <name>unescapeHtml</name>
-    <function-class>cn.iutils.common.utils.Encodes</function-class>
+    <function-class>com.david.common.utils.Encodes</function-class>
     <function-signature>java.lang.String unescapeHtml(java.lang.String)</function-signature>
     <example>${fns:unescapeHtml(html)}</example>  
   </function>
@@ -67,14 +67,14 @@
   <function>
     <description>获取当前日期</description>
     <name>getDate</name>
-    <function-class>cn.iutils.common.utils.DateUtils</function-class>
+    <function-class>com.david.common.utils.DateUtils</function-class>
     <function-signature>java.lang.String getDate(java.lang.String)</function-signature>
     <example>${fns:getDate(pattern)}</example>  
   </function>
   <function>
     <description>获取过去的天数</description>
     <name>pastDays</name>
-    <function-class>cn.iutils.common.utils.DateUtils</function-class>
+    <function-class>com.david.common.utils.DateUtils</function-class>
     <function-signature>long pastDays(java.util.Date)</function-signature>
     <example>${fns:pastDays(date)}</example>  
   </function>
@@ -83,7 +83,7 @@
   <function>
     <description>对象转换JSON字符串</description>
     <name>toJson</name>
-    <function-class>cn.iutils.common.JsonMapper</function-class>
+    <function-class>com.david.common.JsonMapper</function-class>
     <function-signature>java.lang.String toJsonString(java.lang.Object)</function-signature>
     <example>${fns:toJson(object)}</example>  
   </function>
