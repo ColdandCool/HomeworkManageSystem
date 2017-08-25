@@ -1,9 +1,8 @@
-<!- 空白页，默认布局 -->
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <html>
 <head>
-    <title>空白页，默认布局</title>
+    <title>default</title>
     <%@ include file="../../include/head.jsp" %>
     <style type="text/css">
         .tpl-content-wrapper{margin-left:0}
@@ -12,7 +11,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 内容区域 -->
+    <!-- content -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
             <div class="row">
@@ -22,7 +21,7 @@
                             <div class="widget-title am-fl">标题</div>
                         </div>
                         <div class="widget-body am-fr">
-                            内容
+                            content
                         </div>
                     </div>
                 </div>
