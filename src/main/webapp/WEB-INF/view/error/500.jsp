@@ -25,7 +25,7 @@
 						<div class="tpl-error-title-info">Internal Server Error</div>
 						<div class="tpl-page-state-content tpl-error-content">
 							<p>Internal server error, please contact the administrator</p>
-							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">返回主页</button></div>
+							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">Return Home</button></div>
 						<div class="am-g" style="padding: 0px 30px;">
 							<div>The system execution error occurred. The information is described below：</div>
 							<div>The error status code is：${pageContext.errorData.statusCode}</div>

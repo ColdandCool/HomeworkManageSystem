@@ -20,7 +20,7 @@
 						<div class="tpl-error-title-info">Forabidden</div>
 						<div class="tpl-page-state-content tpl-error-content">
 							<p>Insufficient permission to deny access</p>
-							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">返回主页</button></div>
+							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">Return Home</button></div>
 					</div>
 				</div>
 			</div>

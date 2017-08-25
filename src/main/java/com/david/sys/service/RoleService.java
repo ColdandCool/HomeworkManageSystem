@@ -20,8 +20,8 @@ import java.util.Set;
 @Transactional(readOnly = true)
 public class RoleService extends CrudService<IRoleDao, Role> {
 
-//	@Autowired
-//LLL	ResourceService resourceService;
+    @Autowired
+    ResourceService resourceService;
 
     public Set<String> findRoles(String... roleIds) {
         Set<String> roles = new HashSet<String>();
@@ -43,7 +43,6 @@ public class RoleService extends CrudService<IRoleDao, Role> {
                 resourceIds.addAll(role.getResourceIds());
             }
         }
-//LLL		return resourceService.findPermissions(resourceIds);
-        return resourceIds;
+        return resourceService.findPermissions(resourceIds);
     }
 }

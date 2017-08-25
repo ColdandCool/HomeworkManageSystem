@@ -21,7 +21,7 @@
 						<div class="tpl-error-title-info">Page Not Found</div>
 						<div class="tpl-page-state-content tpl-error-content">
 							<p>Sorry, did not find the page you need, may be the URL is uncertain, or the page has been removed.</p>
-							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">返回主页</button></div>
+							<button type="button" class="am-btn am-btn-secondary am-radius tpl-error-btn" onclick="top.location='${ctx}'">Return Home</button></div>
 					</div>
 				</div>
 			</div>

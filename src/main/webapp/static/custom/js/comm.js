@@ -44,7 +44,7 @@ function confirm(msg, href) {
 	layer.confirm(msg, {
 		shade:0.01,
 		offset: '30px',
-		btn : [ '确定', '取消' ]
+		btn : [ 'Confirm', 'Cancel' ]
 	}, function() {
 		window.location.href=href;
 	});
