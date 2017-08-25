@@ -269,7 +269,7 @@
     </dependencies>
 
     <build>
-        <finalName>liulinlin</finalName>
+        <finalName>homework</finalName>
         <plugins>
             <!--生成jar和war包 -->
             <plugin>
