@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><c:set var="iutilsName" value='${fnc:getConfig("david.name")}' />${iutilsName} - 用户登录</title>
+    <title><c:set var="iutilsName" value='${fnc:getConfig("david.name")}' />${iutilsName} - Login In</title>
     <%@ include file="include/head.jsp"%>
 </head>
 <body>
@@ -13,10 +13,10 @@
         <div class="tpl-login-content">
             <%--<div class="tpl-login-logo">--%>
             <%--</div>--%>
-            <form class="am-form tpl-form-line-form" action="${ctx}/login" method="post">
+            <form class="am-form tpl-form-line-form" action="${ctx}/login" method="post" data-am-validator>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
-                        <input class="color-form-control tpl-form-input" type="text" name="username" required>
+                        <input class="color-form-control tpl-form-input" type="text" name="username"  required>
                         <label class="color-form-control-label">Username / email / cell phone number</label>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="am-u-sm-6">
                             <div class="jcaptcha-box" style="margin-top: 20px;">
-                                <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.code" title="点击更换验证码">
+                                <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.code" title="Click to replace the verification code">
                                 <a class="jcaptcha-btn" href="javascript:;">Change</a>
                             </div>
                         </div>

@@ -10973,12 +10973,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.maxChecked = max || Infinity;
 
 	  if ($element[0].required) {
-	    hint.push('必选');
+	    hint.push('required');
 	  }
 
 	  if (min || max) {
-	    min && hint.push('至少选择 ' + min + ' 项');
-	    max && hint.push('至多选择 ' + max + ' 项');
+	    min && hint.push('Select at least ' + min + ' items');
+	    max && hint.push('Choose from at least ' + max + ' items');
 	  }
 
 	  this.$hint.text(hint.join('，'));
@@ -14813,16 +14813,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  zh_CN: {
 	    valueMissing: '请填写（选择）此字段',
 	    customError: {
-	      tooShort: '至少填写 %s 个字符',
-	      checkedOverflow: '至多选择 %s 项',
-	      checkedUnderflow: '至少选择 %s 项'
+	      tooShort: 'Fill in at least %s characters',
+	      checkedOverflow: 'Choose from at least %s items',
+	      checkedUnderflow: 'Select at least %s items'
 	    },
-	    patternMismatch: '请按照要求的格式填写',
-	    rangeOverflow: '请填写小于等于 %s 的值',
-	    rangeUnderflow: '请填写大于等于 %s 的值',
+	    patternMismatch: 'Please fill in the required format',
+	    rangeOverflow: 'Please fill in a value less than or equal to %s',
+	    rangeUnderflow: 'Please enter a value greater than or equal to %s',
 	    stepMismatch: '',
-	    tooLong: '至多填写 %s 个字符',
-	    typeMismatch: '请按照要求的类型填写'
+	    tooLong: 'Include at most %s characters',
+	    typeMismatch: 'Please fill in the required format'
 	  }
 	};
 

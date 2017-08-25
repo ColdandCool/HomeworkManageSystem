@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="icon" type="image/png" href="${ctxStatic}/assets/i/favicon.png">
 <link rel="apple-touch-icon-precomposed" href="${ctxStatic}/assets/i/app-icon72x72@2x.png">
-<meta name="apple-mobile-web-app-title" content="${iutilsName}" />
+<meta name="apple-mobile-web-app-title" content="" />
 <link rel="stylesheet" href="${ctxStatic}/3rd-lib/amazeui/css/amazeui.min.css" />
 <link rel="stylesheet" href="${ctxStatic}/3rd-lib/amazeui-color/color.min.css">
 <link rel="stylesheet" href="${ctxStatic}/assets/css/app.css">

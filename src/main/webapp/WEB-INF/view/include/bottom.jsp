@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="${ctxStatic}/3rd-lib/layer/layer.js"></script>
-<script src="${ctxStatic}/3rd-lib/amazeui/js/amazeui.min.js"></script>
+<script src="${ctxStatic}/3rd-lib/amazeui/js/amazeui.js"></script>
 <script src="${ctxStatic}/3rd-lib/amazeui-color/color.min.js"></script>
 <script type="text/javascript" src="${ctxStatic}/custom/js/comm.js"></script>
 <script src="${ctxStatic}/assets/js/app.js"></script>
