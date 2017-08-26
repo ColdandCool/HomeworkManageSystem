@@ -104,8 +104,7 @@ public class UserService extends CrudService<IUserDao, User> {
         if (user == null) {
             return Collections.emptySet();
         }
-        return roleService.findPermissions(user.getRoleIds().toArray(
-                new String[0]));
+        return roleService.findPermissions(user.getRoleIds().toArray(new String[0]));
     }
 
     /**
