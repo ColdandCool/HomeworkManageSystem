@@ -17,13 +17,13 @@
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
                         <input class="color-form-control tpl-form-input" type="text" name="username"  required>
-                        <label class="color-form-control-label">Username / email / cell phone number</label>
+                        <label class="color-form-control-label">Account</label>
                     </div>
                 </div>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
                         <input class="color-form-control tpl-form-input" type="password" name="password" required>
-                        <label class="color-form-control-label">password</label>
+                        <label class="color-form-control-label">Password</label>
                     </div>
                 </div>
                 <div class="am-form-group">
@@ -31,7 +31,7 @@
                         <div class="am-u-sm-6" style="padding-left: 1.5rem;padding-right: 1.5rem;">
                             <div class="color-form-group color-form-line color-floating-label">
                                 <input class="color-form-control tpl-form-input" type="text" name="jcaptchaCode" required>
-                                <label class="color-form-control-label">Verification code</label>
+                                <label class="color-form-control-label">Code</label>
                             </div>
                         </div>
                         <div class="am-u-sm-6">

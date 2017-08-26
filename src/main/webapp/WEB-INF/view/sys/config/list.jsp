@@ -38,8 +38,8 @@
                                     <input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <div class="tagsinput">
-                                            <c:if test="${not empty page.entity.sysName}"><span class="tags"><input type="hidden" name="sysName" value="${page.entity.sysName}" />系统名称=${page.entity.sysName} <a href="javascript:;" onclick="$(this).parent().remove()">x</a></span></c:if>
-                                            <c:if test="${not empty page.entity.moduleName}"><span class="tags"><input type="hidden" name="moduleName" value="${page.entity.moduleName}" />模块名称=${page.entity.moduleName} <a href="javascript:;" onclick="$(this).parent().remove()">x</a></span></c:if>
+                                            <c:if test="${not empty page.entity.sysName}"><span class="tags"><input type="hidden" name="sysName" value="${page.entity.sysName}" />SysName=${page.entity.sysName} <a href="javascript:;" onclick="$(this).parent().remove()">x</a></span></c:if>
+                                            <c:if test="${not empty page.entity.moduleName}"><span class="tags"><input type="hidden" name="moduleName" value="${page.entity.moduleName}" />ModuleName=${page.entity.moduleName} <a href="javascript:;" onclick="$(this).parent().remove()">x</a></span></c:if>
                                                 <span class="am-select am-input-group-sm">
                                                      <input type="text" class="am-select-input" autocomplete="off" style="border: none;"
                                                             placeholder="KEY" am-data='[{"field":"sysName","desc":"SysName","type":"string"},{"field":"moduleName","desc":"Module Name","type":"string"}]'>

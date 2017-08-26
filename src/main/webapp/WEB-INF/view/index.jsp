@@ -31,7 +31,7 @@
                 <ul>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Welcome,
+                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Hello,
                             <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
                     </li>
                     <!-- 新邮件 -->

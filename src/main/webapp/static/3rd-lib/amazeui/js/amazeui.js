@@ -10862,7 +10862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dropUp: 0,
 	  maxHeight: null,
 	  maxChecked: null,
-	  placeholder: '点击选择...',
+	  placeholder: 'Click to select...',
 	  selectedClass: 'am-checked',
 	  disabledClass: 'am-disabled',
 	  searchBox: false,
@@ -10875,7 +10875,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  '  </button>' +
 	  '  <div class="am-selected-content am-dropdown-content">' +
 	  '    <h2 class="am-selected-header">' +
-	  '<span class="am-icon-chevron-left">返回</span></h2>' +
+	  '<span class="am-icon-chevron-left">Return</span></h2>' +
 	  '   <% if (searchBox) { %>' +
 	  '   <div class="am-selected-search">' +
 	  '     <input autocomplete="off" class="am-form-field am-input-sm" />' +
@@ -11288,7 +11288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	Share.SNS = {
 	  weibo: {
-	    title: '新浪微博',
+	    title: 'weibo',
 	    url: 'http://service.weibo.com/share/share.php',
 	    width: 620,
 	    height: 450,
@@ -11302,7 +11302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // NOTE: 会自动抓取图片，不用指定 pic
 
 	  qq: {
-	    title: 'QQ 好友',
+	    title: 'QQ ',
 	    url: 'http://connect.qq.com/widget/shareqq/index.html',
 	    icon: 'qq'
 	  },
@@ -11315,7 +11315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // NOTE: 经过测试，最终发给用户的只有 url 和 desc
 
 	  qzone: {
-	    title: 'QQ 空间',
+	    title: 'QQ qzone',
 	    url: 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey',
 	    icon: 'star'
 	  },
@@ -11328,7 +11328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // pics:'',     分享图片的路径(可选)，不会自动抓取，多个图片用|分隔
 
 	  tqq: {
-	    title: '腾讯微博',
+	    title: 'tencent',
 	    url: 'http://v.t.qq.com/share/share.php',
 	    icon: 'tencent-weibo'
 	  },
@@ -11340,7 +11340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // NOTE: 不会自动抓取图片
 
 	  wechat: {
-	    title: '微信',
+	    title: 'weixin',
 	    url: '[qrcode]',
 	    icon: 'wechat'
 	  },
@@ -11348,7 +11348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // 相关接口 https://github.com/zxlie/WeixinApi
 
 	  renren: {
-	    title: '人人网',
+	    title: 'renren',
 	    url: 'http://widget.renren.com/dialog/share',
 	    icon: 'renren'
 	  },
@@ -11363,7 +11363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // NOTE: 经过测试，直接使用 url 参数即可
 
 	  douban: {
-	    title: '豆瓣',
+	    title: 'douban',
 	    url: 'http://www.douban.com/recommend/',
 	    icon: 'share-alt'
 	  },
@@ -11388,13 +11388,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // print: '',
 
 	  mail: {
-	    title: '邮件分享',
+	    title: 'MailShare',
 	    url: 'mailto:',
 	    icon: 'envelope-o'
 	  },
 
 	  sms: {
-	    title: '短信分享',
+	    title: 'Sms',
 	    url: 'sms:',
 	    icon: 'comment'
 	  }
