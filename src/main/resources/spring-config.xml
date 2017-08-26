@@ -119,8 +119,8 @@
     <bean class="com.david.common.spring.SpringUtils"></bean>
 
     <!-- 调度工厂 -->
-    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-    </bean>
+    <!--<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+    <!--</bean>-->
 
     <!-- 导入shiro配置 -->
     <import resource="classpath:spring-config-shiro.xml"/>

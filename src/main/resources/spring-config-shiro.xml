@@ -58,17 +58,10 @@
     </bean>
 
     <!-- 会话DAO -->
-    <bean id="sessionDAO" class="com.david.sys.dao.DBSessionDAO">
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
         <property name="activeSessionsCacheName" value="${homework.activeSession.cache}"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
-
-    <!-- 会话验证调度器 -->
-    <bean id="sessionValidationScheduler" class="com.david.common.quartz.QuartzSessionValidationScheduler">
-        <property name="sessionValidationInterval" value="1800000"/><!-- 1800000定时清理过期会话 -->
-        <property name="sessionManager" ref="sessionManager"/>
-    </bean>
-
     <!-- 会话管理器 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="globalSessionTimeout" value="1800000"/>
@@ -76,6 +69,11 @@
         <property name="sessionDAO" ref="sessionDAO"/>
         <property name="sessionIdCookieEnabled" value="true"/>
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+    <!-- 会话验证调度器 -->
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+        <property name="sessionValidationInterval" value="1800000"/>
+        <property name="sessionManager" ref="sessionManager"/>
     </bean>
 
     <!-- 安全管理器 -->
@@ -113,12 +111,8 @@
         <property name="failureKeyAttribute" value="shiroLoginFailure"/>
     </bean>
 
-    <!-- LLL 系统日志拦截器 -->
-    <!--<bean id="slogFilter" class="com.david.common.filter.SLogFilter"></bean>-->
     <!-- 用户访问权限验证 -->
     <bean id="userAccessFilter" class="com.david.common.filter.UserAccessFilter"></bean>
-    <!-- LLL 会话权限验证 -->
-    <!--<bean id="forceLogoutFilter" class="com.david.common.filter.ForceLogoutFilter"></bean>-->
 
     <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -126,10 +120,8 @@
         <property name="loginUrl" value="${adminPath}/login"/>
         <property name="filters">
             <util:map>
-                <!-- LLl <entry key="forceLogout" value-ref="forceLogoutFilter"/>-->
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
                 <entry key="logout" value-ref="logoutFilter"/>
-                <!--LLL<entry key="slog" value-ref="slogFilter"/>-->
                 <entry key="userAccess" value-ref="userAccessFilter"/>
                 <entry key="jCaptchaValidate" value-ref="jCaptchaValidateFilter"/>
             </util:map>
