@@ -66,7 +66,7 @@
 											<td>
 												<shiro:hasPermission name="sys:role:view"><a href="javascript:;" onclick="openModel(false,'${ctx}/role/update?id=${role.id}')" title="Modify"><span class="am-icon-pencil"></span></a></shiro:hasPermission>
 												<shiro:hasPermission name="sys:role:edit"><c:if test="${role.id>1}">
-													<a href="${ctx}/role/delete?id=${role.id}&pageNo=${page.pageNo}&pageSize=${page.pageSize}" onclick="return confirm('Are you sure you want to delete the data?？', this.href)" title="Delete"><span class="am-text-danger am-icon-trash-o"></span></a>
+													<a href="${ctx}/role/delete?id=${role.id}&pageNo=${page.pageNo}&pageSize=${page.pageSize}" onclick="return confirm('Are you sure you want to delete the data?', this.href)" title="Delete"><span class="am-text-danger am-icon-trash-o"></span></a>
 												</c:if></shiro:hasPermission>
 											</td>
 										</tr>

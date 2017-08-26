@@ -109,7 +109,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Role role, RedirectAttributes redirectAttributes) {
         roleService.save(role);
-        addMessage(redirectAttributes, "Success Save");
+        addMessage(redirectAttributes, "Success");
         return "redirect:" + adminPath + "/role/update?id=" + role.getId();
     }
 
@@ -126,9 +126,9 @@ public class RoleController extends BaseController {
         // lLL 这里删除写死了，不好，应该是验证角色就可以了。
         if (!"1".equals(role.getId())) {
             roleService.delete(role);
-            addMessage(redirectAttributes, "Success Delete");
+            addMessage(redirectAttributes, "Success");
         } else {
-            addMessage(redirectAttributes, "Cannt Delete!!");
+            addMessage(redirectAttributes, "Cannot Delete");
         }
         return "redirect:" + adminPath + "/role?pageNo=" + pageNo + "&pageSize=" + pageSize;
     }
