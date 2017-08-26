@@ -132,6 +132,7 @@
                 /jcaptcha* = anon
                 ${adminPath}/ajaxLogin = anon
                 ${adminPath}/register = anon
+                ${adminPath}/forgetpassword = anon
                 ${restPath}/api/** = anon,userAccess
                 ${frontPath}/** = anon
                 ${adminPath}/login = jCaptchaValidate,authc

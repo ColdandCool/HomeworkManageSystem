@@ -28,13 +28,13 @@
                 </div>
                 <div class="am-form-group">
                     <div class="am-g">
-                        <div class="am-u-sm-6" style="padding-left: 1.5rem;padding-right: 1.5rem;">
+                        <div class="am-u-sm-8">
                             <div class="color-form-group color-form-line color-floating-label">
                                 <input class="color-form-control tpl-form-input" type="text" name="jcaptchaCode" required>
                                 <label class="color-form-control-label">Code</label>
                             </div>
                         </div>
-                        <div class="am-u-sm-6">
+                        <div class="am-u-sm-4">
                             <div class="jcaptcha-box" style="margin-top: 20px;">
                                 <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.code" title="Click to replace the verification code">
                             </div>
@@ -42,13 +42,26 @@
                     </div>
                 </div>
                 <div class="am-form-group tpl-login-remember-me">
-                    <input id="remember-me" name="rememberMe" type="checkbox">
-                    <label for="remember-me">
-                        Remember me
-                    </label>
+                    <div class="am-g">
+                        <div class="am-u-sm-4">
+                            <input id="remember-me" name="rememberMe" type="checkbox">
+                            <label for="remember-me">
+                                Remember me
+                            </label>
+                        </div>
+                        <div class="am-u-sm-4"></div>
+                        <div class="am-u-sm-4 right">
+                                <a href="${ctx}/forgetpassword"><strong>Forget password</strong></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="am-form-group">
-                    <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">log in</button>
+                    <div class="am-u-sm-6 am-center">
+                        <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">log in</button>
+                    </div>
+                    <div class="am-u-sm-6 am-center">
+                        <a href="${ctx}/register" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">register</a>
+                    </div>
                 </div>
             </form>
         </div>

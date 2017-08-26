@@ -28,6 +28,12 @@
 		from sys_user a
 		where a.status='0' and a.username=#{username}
 	</select>
+
+	<select id="getUserByUserEmail" resultType="com.david.sys.entity.User">
+		select
+		<include refid="userColumns"/>
+		from sys_user a	where a.email=#{email}
+	</select>
 	
 	<select id="get" resultType="com.david.sys.entity.User">
 		SELECT 

@@ -111,7 +111,7 @@ public class LoginController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(String username, String password, String rpassword, Model model) {
+    public String register(String username, String email, String password, String rpassword, Model model) {
         String url = "register";
         //判断是否密码重复
         if (!password.equals(rpassword)) {
@@ -122,7 +122,8 @@ public class LoginController extends BaseController {
                 user = new User();
                 user.setUsername(username);
                 user.setPassword(password);
-                user.setRoleIdsStr("3,");
+                user.setEmail(email);
+                user.setRoleIdsStr("2,");
                 passwordHelper.encryptPassword(user);
                 userService.save(user);
                 addMessage(model, "registration success");
@@ -132,6 +133,35 @@ public class LoginController extends BaseController {
             }
         }
         return url;
+    }
+
+    /**
+     * forget password
+     *
+     * @return
+     */
+    @RequestMapping(value = "/forgetpassword", method = RequestMethod.GET)
+    public String forgetpassword() {
+        return "forgetpassword";
+    }
+
+    @RequestMapping(value = "/forgetpassword", method = RequestMethod.POST)
+    public String sendmail(String email, Model model) {
+        User user = userService.getUserByUserEmail(email);
+        if (user == null) {
+            addMessage(model, "There is no email Account");
+            return "forgetpassword";
+        }
+        String newPassword = "1";
+        try {
+            userService.changePassword(user, newPassword);
+            //LLL 发送邮件
+        } catch (Exception e) {
+            addMessage(model, "The server is out Please try again later");
+            return "forgetpassword";
+        }
+        addMessage(model, "A new password has been sent to the " + email + ". Please sign in again");
+        return "forgetpassword";
     }
 
 }

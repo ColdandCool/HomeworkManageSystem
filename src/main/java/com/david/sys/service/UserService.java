@@ -35,8 +35,7 @@ public class UserService extends CrudService<IUserDao, User> {
      * @param newPassword
      */
     @Transactional(readOnly = false)
-    public void changePassword(String userId, String password,
-                               String newPassword) throws Exception {
+    public void changePassword(String userId, String password, String newPassword) throws Exception {
         User user = dao.get(userId);
         String oldPassword = user.getPassword();
         user.setPassword(password);
@@ -123,6 +122,29 @@ public class UserService extends CrudService<IUserDao, User> {
             if (user == null) {
                 user = dao.getUserByUserName(userName);
                 CacheUtils.put(userName, user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    /**
+     * Get the user based on the login email
+     *
+     * @param email
+     * @return
+     */
+    public User getUserByUserEmail(String email) {
+        if (JStringUtils.isBlank(email)) {
+            return null;
+        }
+        User user = null;
+        try {
+            user = (User) CacheUtils.get(email);
+            if (user == null) {
+                user = dao.getUserByUserEmail(email);
+                CacheUtils.put(email, user);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -25,6 +25,14 @@ public interface IUserDao extends ICrudDao<User> {
 	public User getUserByUserName(@Param("username") String username);
 
 	/**
+	 * Obtain user information based on user email
+	 *
+	 * @param email
+	 * @return
+	 */
+	public User getUserByUserEmail(@Param("email") String email);
+
+	/**
 	 * Get the user list
 	 * @param users
 	 * @return
