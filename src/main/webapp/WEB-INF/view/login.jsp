@@ -37,7 +37,6 @@
                         <div class="am-u-sm-6">
                             <div class="jcaptcha-box" style="margin-top: 20px;">
                                 <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.code" title="Click to replace the verification code">
-                                <a class="jcaptcha-btn" href="javascript:;">Change</a>
                             </div>
                         </div>
                     </div>
