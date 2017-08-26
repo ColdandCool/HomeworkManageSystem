@@ -124,9 +124,9 @@ public class UserController extends BaseController {
         if (loginUser.isAdmin() || user.getId().equals(loginUser.getId()) || loginUser.getIsDept()) {
             userService.save(user);
             CacheUtils.remove(user.getUsername());
-            addMessage(redirectAttributes, "保存成功");
+            addMessage(redirectAttributes, "Success");
         } else {
-            addMessage(redirectAttributes, "不能修改");
+            addMessage(redirectAttributes, "Cannot Modify");
         }
         return "redirect:" + adminPath + "/user/update?id=" + user.getId();
     }
@@ -143,11 +143,11 @@ public class UserController extends BaseController {
     public String delete(User user, int pageNo, int pageSize, RedirectAttributes redirectAttributes) {
         if (user.isAdmin() && user.getId().equals(UserUtils.getLoginUser().getId())) {
             //不能删除超级用户，和当前登录用户
-            addMessage(redirectAttributes, "不能删除");
+            addMessage(redirectAttributes, "Cannot Delete");
         } else {
             userService.delete(user);
             CacheUtils.remove(user.getUsername());
-            addMessage(redirectAttributes, "删除成功");
+            addMessage(redirectAttributes, "Success");
         }
         return "redirect:" + adminPath + "/user/list" + "?pageNo=" + pageNo + "&pageSize=" + pageSize;
     }
@@ -180,11 +180,11 @@ public class UserController extends BaseController {
     public String changePassword(@PathVariable("id") String id, String password, String newPassword, RedirectAttributes redirectAttributes) {
         try {
             userService.changePassword(id, password, newPassword);
-            addMessage(redirectAttributes, "修改密码成功");
+            addMessage(redirectAttributes, "Success");
             return "redirect:" + adminPath + "/user/" + id + "/changePassword";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            addMessage(redirectAttributes, "修改密码失败");
+            addMessage(redirectAttributes, "Fail");
             return "redirect:" + adminPath + "/user/" + id + "/changePassword";
         }
     }
@@ -202,10 +202,10 @@ public class UserController extends BaseController {
         ResultVo resultVo = null;
         try {
             userService.changePassword(UserUtils.getLoginUser(), newPassword);
-            resultVo = new ResultVo(ResultVo.SUCCESS, "1", "调用成功", null);
+            resultVo = new ResultVo(ResultVo.SUCCESS, "1", "Success", null);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            resultVo = new ResultVo(ResultVo.FAILURE, "-1", "调用失败", null);
+            resultVo = new ResultVo(ResultVo.FAILURE, "-1", "Fail", null);
         }
         return resultVo;
     }
@@ -235,7 +235,7 @@ public class UserController extends BaseController {
         userService.save(user);
         CacheUtils.remove(user.getUsername());
         model.addAttribute("user", user);
-        addMessage(model, "保存资料成功");
+        addMessage(model, "Success");
         return "sys/user/config-userInfo";
     }
 
@@ -269,10 +269,10 @@ public class UserController extends BaseController {
         ResultVo resultVo = null;
         try {
             List<Map> list = userService.getUsers(users);
-            resultVo = new ResultVo(ResultVo.SUCCESS, "1", "获取用户列表调用成功", list);
+            resultVo = new ResultVo(ResultVo.SUCCESS, "1", "Success", list);
         } catch (Exception e) {
             logger.error("获取用户列表调用失败", e.getMessage());
-            resultVo = new ResultVo(ResultVo.FAILURE, "-1", "获取用户列表调用失败", null);
+            resultVo = new ResultVo(ResultVo.FAILURE, "-1", "Fail", null);
         }
         return resultVo;
     }
