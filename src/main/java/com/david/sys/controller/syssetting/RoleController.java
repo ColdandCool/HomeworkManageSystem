@@ -4,7 +4,6 @@ import com.david.common.BaseController;
 import com.david.common.Page;
 import com.david.common.utils.JStringUtils;
 import com.david.common.utils.UserUtils;
-import com.david.sys.entity.Organization;
 import com.david.sys.entity.Role;
 import com.david.sys.entity.User;
 import com.david.sys.entity.enums.DataScopeEnum;
@@ -89,11 +88,6 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Role role, Model model) {
         User user = UserUtils.getLoginUser();
-        Organization organization = new Organization();
-        organization.setUser(user);
-        //机构列表
-//LLL		model.addAttribute("organizationList", organizationService.findList(organization));
-        model.addAttribute("organizationList", new ArrayList<>());
         //资源列表
         if (user.isAdmin()) {
             model.addAttribute("resourceList", resourceService.findList(null));
@@ -114,8 +108,6 @@ public class RoleController extends BaseController {
     @RequiresPermissions("sys:role:edit")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Role role, RedirectAttributes redirectAttributes) {
-        //LLL 设置默认的组织 后期需要改
-        role.setOrganizationId("1");
         roleService.save(role);
         addMessage(redirectAttributes, "Success Save");
         return "redirect:" + adminPath + "/role/update?id=" + role.getId();

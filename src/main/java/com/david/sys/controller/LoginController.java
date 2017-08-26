@@ -122,7 +122,6 @@ public class LoginController extends BaseController {
                 user = new User();
                 user.setUsername(username);
                 user.setPassword(password);
-                user.setOrganizationId("1");
                 user.setRoleIdsStr("3,");
                 passwordHelper.encryptPassword(user);
                 userService.save(user);

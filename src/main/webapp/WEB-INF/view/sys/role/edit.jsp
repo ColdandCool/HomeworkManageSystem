@@ -34,18 +34,6 @@
                         <div class="widget-body am-fr">
                             <form class="am-form tpl-form-border-form" data-am-validator modelAttribute="role" action="${ctx}/role/update" method="post">
                                 <input type="hidden" name="id" value="${role.id}" />
-                                <div class="am-form-group" style="display: none">
-                                    <label class="am-u-sm-3 am-form-label"><span class="error">*</span>Organization：</label>
-                                    <div class="am-u-sm-9">
-                                        <div class="am-input-group" style="width: 200px;">
-                                            <input type="text" id="parentName" class="am-form-field" minlength="1" placeholder="Organization（Required）" value="${role.organization.name}" required readonly/>
-                                            <input type="hidden" id="organizationId" name="organizationId" value="${role.organizationId}" />
-								    <span class="am-input-group-btn">
-									<button class="am-btn am-btn-default" id="menuBtn" type="button">Chose</button>
-								    </span>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="am-form-group">
                                     <label class="am-u-sm-3 am-form-label"><span class="error">*</span>Name：</label>
                                     <div class="am-u-sm-9">

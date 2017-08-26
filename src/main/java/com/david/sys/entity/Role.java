@@ -17,33 +17,22 @@ public class Role extends DataEntity<Role> {
     private static final long serialVersionUID = 1L;
     private String role; // label
     private String name; // name
-    private String organizationId;//机构ID
-    private Organization organization;//归属机构
     private DataScopeEnum dataScope = DataScopeEnum.self; // 数据范围
     private List<String> resourceIds; // 拥有的资源
     private String resourceIdsStr; // 拥有的资源
     private Boolean available = Boolean.TRUE; // 是否可用
 
-    //LLL 是不是后期去掉？？
     public static enum RoleType {
-        /**
-         * 管理员
-         */
-        SECURITY_ROLE("security-role", "管理员"),
-        /**
-         * 可进行任务分配
-         */
+        /** 管理员 */
+        SECURITY_ROLE("security-role","管理员"),
+        /** 可进行任务分配 */
         ASSIGNMENT("assignment", "可进行任务分配"),
-        /**
-         * 普通用户
-         */
+        /** 普通用户 */
         USER("user", "普通用户");
-
         private RoleType(String typeName, String typeDesc) {
             this.typeName = typeName;
             this.typeDesc = typeDesc;
         }
-
         private String typeName;
         private String typeDesc;
 
@@ -64,7 +53,6 @@ public class Role extends DataEntity<Role> {
         }
 
     }
-
     public Role() {
         super();
     }
@@ -104,21 +92,6 @@ public class Role extends DataEntity<Role> {
         this.dataScope = dataScope;
     }
 
-    public String getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
-    }
-
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
 
     public List<String> getResourceIds() {
         if (resourceIds == null) {

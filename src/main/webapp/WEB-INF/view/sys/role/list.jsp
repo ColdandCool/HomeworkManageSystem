@@ -48,7 +48,6 @@
 									<thead>
 									<tr>
 										<th>No</th>
-										<%--<th>归属机构</th>--%>
 										<th>Name</th>
 										<th>Label</th>
 										<th>Available</th>
@@ -60,7 +59,6 @@
 									<c:forEach items="${page.list}" var="role" varStatus="status">
 										<tr>
 											<td>${status.index+1}</td>
-											<%--<td>${role.organization.name}</td>--%>
 											<td>${role.name}</td>
 											<td>${role.role}</td>
 											<td>${role.available?'<span class="am-badge am-badge-success am-radius">YES</span>':'<span class="am-badge am-badge-danger am-radius">NO</span>'}</td>

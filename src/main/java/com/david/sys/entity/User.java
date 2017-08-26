@@ -16,8 +16,6 @@ public class User extends DataEntity<User> {
 	private static final long serialVersionUID = 1L;
 
 	private String no;// 编号
-	private String organizationId; // 组织机构编号
-	private Organization organization;//组织机构
 	private String username; // 用户名
 	private String password; // 密码
 	private String salt; // 加密密码的盐
@@ -43,22 +41,6 @@ public class User extends DataEntity<User> {
 		super();
 		this.username = username;
 		this.password = password;
-	}
-
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
-	public Organization getOrganization() {
-		return organization;
-	}
-
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
 	}
 
 	public String getUsername() {
