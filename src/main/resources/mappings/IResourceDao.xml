@@ -98,7 +98,7 @@
 	<!-- 查询是否存在下级节点 -->
 	<select id="findNext" resultType="int">
 		SELECT count(1) FROM sys_resource a
-		WHERE a.parent_id=#{id}
+		WHERE a.parent_id=#{id} and a.status=0
 	</select>
 
 </mapper>
