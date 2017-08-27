@@ -50,8 +50,8 @@
                                     <label class="am-u-sm-3 am-form-label">Available：</label>
                                     <div class="am-u-sm-9">
                                         <select name="available" data="${role.available}">
-                                            <option value="true">YES</option>
-                                            <option value="false">NO</option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
                                         </select>
                                     </div>
                                 </div>

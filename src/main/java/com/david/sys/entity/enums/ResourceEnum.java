@@ -6,7 +6,7 @@ package com.david.sys.entity.enums;
  */
 public enum ResourceEnum {
 
-	menu("菜单"), form("表单元素");
+	menu("Menu"), form("FormElement");
 
 	private final String info;
 

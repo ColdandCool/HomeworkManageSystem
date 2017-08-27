@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * 系统信息获取工具 LLL 后期可以删除不再使用
+ * 系统信息获取工具 LLL 后期可以删除不再使用  需要将
  * @author david.cn
  */
 public class SystemUtils extends BaseUtils{

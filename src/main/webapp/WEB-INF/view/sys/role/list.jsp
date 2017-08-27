@@ -61,7 +61,7 @@
 											<td>${status.index+1}</td>
 											<td>${role.name}</td>
 											<td>${role.role}</td>
-											<td>${role.available?'<span class="am-badge am-badge-success am-radius">YES</span>':'<span class="am-badge am-badge-danger am-radius">NO</span>'}</td>
+											<td>${role.available?'<span class="am-badge am-badge-success am-radius">Yes</span>':'<span class="am-badge am-badge-danger am-radius">No</span>'}</td>
 											<td>${role.remarks}</td>
 											<td>
 												<shiro:hasPermission name="sys:role:view"><a href="javascript:;" onclick="openModel(false,'${ctx}/role/update?id=${role.id}')" title="Modify"><span class="am-icon-pencil"></span></a></shiro:hasPermission>

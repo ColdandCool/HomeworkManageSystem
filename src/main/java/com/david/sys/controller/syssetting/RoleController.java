@@ -34,9 +34,6 @@ public class RoleController extends BaseController {
     @Autowired
     private RoleService roleService;
 
-//	@Autowired
-//LLL	private OrganizationService organizationService;
-
     @Autowired
     private ResourceService resourceService;
 

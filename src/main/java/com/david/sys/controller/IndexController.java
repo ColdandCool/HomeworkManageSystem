@@ -16,31 +16,32 @@ import java.util.Set;
 
 /**
  * 首页控制器
- * 
+ *
  * @author David
  */
 @Controller
 @RequestMapping(value = "${adminPath}")
 public class IndexController extends BaseController {
 
-	@Autowired
-	private ResourceService resourceService;
+    @Autowired
+    private ResourceService resourceService;
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String index(Model model) {
-		Set<String> permissions = userService.findPermissions();
-		List<Resource> menus = resourceService.findMenus(permissions);
-		model.addAttribute("menus", menus);
-		return "index";
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(Model model) {
+        Set<String> permissions = userService.findPermissions();
+        List<Resource> menus = resourceService.findMenus(permissions);
+        model.addAttribute("menus", menus);
+        return "index";
+    }
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String welcome(Model model) {
-		model.addAttribute("systemInfo", SystemUtils.getSystemInfo());
-		return "welcome";
-	}
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    public String welcome(Model model) {
+        //LLL 后期删除
+        model.addAttribute("systemInfo", SystemUtils.getSystemInfo());
+        return "welcome";
+    }
 
 }
