@@ -2,6 +2,7 @@ package com.david.sys.controller;
 
 import com.david.common.BaseController;
 import com.david.common.ResultVo;
+import com.david.common.spring.SpringMailUtil;
 import com.david.common.utils.UserUtils;
 import com.david.sys.entity.User;
 import com.david.sys.service.PasswordHelper;
@@ -155,8 +156,11 @@ public class LoginController extends BaseController {
         String newPassword = "1";
         try {
             userService.changePassword(user, newPassword);
-            //LLL 发送邮件
+            String context ="the new password is :"+newPassword + ",please log in and change the password!";
+            SpringMailUtil.sendTextMail(email,"Retrieve the password",context);
         } catch (Exception e) {
+//            logger.error("send mail error,ther msg is :{}",e.toString());
+            e.printStackTrace();
             addMessage(model, "The server is out Please try again later");
             return "forgetpassword";
         }
