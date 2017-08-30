@@ -28,6 +28,7 @@ public class User extends DataEntity<User> {
 	private String phone;// 电话
 	private String mobile;// 手机
 	private String photo;// 头像
+	private String teamleaderId;
 
 	public User() {
 		super();
@@ -179,4 +180,11 @@ public class User extends DataEntity<User> {
 		return id != null && "1".equals(id);
 	}
 
+	public String getTeamleaderId() {
+		return teamleaderId;
+	}
+
+	public void setTeamleaderId(String teamleaderId) {
+		this.teamleaderId = teamleaderId;
+	}
 }

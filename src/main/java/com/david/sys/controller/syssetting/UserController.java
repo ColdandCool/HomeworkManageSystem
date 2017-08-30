@@ -71,7 +71,7 @@ public class UserController extends BaseController {
     public String teamuser(User user, Model model, Page<User> page) {
         //LLL 小组管理人员
         page.setEntity(user);
-        model.addAttribute("page", page.setList(userService.findPage(page)));
+        model.addAttribute("page", page.setList(userService.findTeamUsersPage(page)));
         return "sys/user/list";
     }
 

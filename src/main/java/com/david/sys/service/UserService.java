@@ -1,5 +1,6 @@
 package com.david.sys.service;
 
+import com.david.common.Page;
 import com.david.common.service.CrudService;
 import com.david.common.utils.CacheUtils;
 import com.david.common.utils.JStringUtils;
@@ -162,4 +163,12 @@ public class UserService extends CrudService<IUserDao, User> {
         return dao.getUsers(users);
     }
 
+    public List<User> findTeamUsersPage(Page<User> page) {
+        User user = UserUtils.getLoginUser();
+        if (user == null){
+            return Collections.emptyList();
+        }
+        page.setTotal(dao.findTeamUsersCount(user.getId()));
+        return dao.findTeamUsersPage(page,user.getId());
+    }
 }

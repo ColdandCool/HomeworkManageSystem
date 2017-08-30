@@ -11,6 +11,7 @@ public class Homework extends DataEntity<Homework> {
     private String content;
     private Date deadline;
     private String deadlineStr;
+    private String hasUpload;
 
     public String getDeadlineStr() {
         return deadlineStr;
@@ -42,5 +43,13 @@ public class Homework extends DataEntity<Homework> {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getHasUpload() {
+        return hasUpload;
+    }
+
+    public void setHasUpload(String hasUpload) {
+        this.hasUpload = hasUpload;
     }
 }

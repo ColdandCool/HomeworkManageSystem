@@ -106,7 +106,8 @@
     </bean>
 
     <bean id="jCaptchaValidateFilter" class="com.david.common.jcaptcha.JCaptchaValidateFilter">
-        <property name="jcaptchaEbabled" value="true"/>
+        <!--lll 暂时不启用验证码-->
+        <property name="jcaptchaEbabled" value="false"/>
         <property name="jcaptchaParam" value="jcaptchaCode"/>
         <property name="failureKeyAttribute" value="shiroLoginFailure"/>
     </bean>

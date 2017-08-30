@@ -56,4 +56,7 @@
         update back_homework set status='1' where id=#{id}
     </delete>
 
+    <select id="hasUpload" resultType="int">
+        SELECT count(1) FROM back_homework_submit a WHERE a.status='0' and a.homework_id =#{homeworkid} and a.user_id=#{userid}
+    </select>
 </mapper>

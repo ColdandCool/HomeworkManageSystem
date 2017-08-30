@@ -1,3 +1,17 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50719
+Source Host           : localhost:3306
+Source Database       : homework
+
+Target Server Type    : MYSQL
+Target Server Version : 50719
+File Encoding         : 65001
+
+Date: 2017-08-30 12:27:29
+*/
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -52,14 +66,10 @@ DROP TABLE IF EXISTS `back_homework_submit`;
 CREATE TABLE `back_homework_submit` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `homework_id` bigint(20) NOT NULL COMMENT '作业名字',
+  `user_id` bigint(20) NOT NULL COMMENT '作业名字',
   `homework_grade` int(10) NOT NULL COMMENT '作业内容',
   `submit_name` varchar(255) DEFAULT NULL COMMENT '作业内容',
   `submit_url` varchar(255) DEFAULT NULL,
-  `create_by` bigint(20) DEFAULT NULL COMMENT '创建人',
-  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` bigint(20) DEFAULT NULL COMMENT '修改人',
-  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
-  `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homework submit';
