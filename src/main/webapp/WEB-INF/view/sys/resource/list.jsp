@@ -62,9 +62,9 @@
 									<thead>
 									<tr>
 										<th>No</th>
-										<th>Superior</th>
 										<th>Name</th>
 										<th>Type</th>
+										<th>Superior</th>
 										<th>Url</th>
 										<th>Sort</th>
 										<th>Available</th>
@@ -76,9 +76,9 @@
 									<c:forEach items="${page.list}" var="resource" varStatus="status">
 										<tr>
 											<td>${status.index+1}</td>
-											<td>${resource.resource.name}</td>
 											<td>${resource.name}</td>
 											<td><span class="am-badge am-badge-primary am-radius">${resource.type.info}</span></td>
+											<td>${resource.resource.name}</td>
 											<td>${resource.url}</td>
 											<td>${resource.sort}</td>
 											<td>${resource.available?'<span class="am-badge am-badge-success am-radius">Yes</span>':'<span class="am-badge am-badge-danger am-radius">No</span>'}</td>
