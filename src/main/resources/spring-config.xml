@@ -113,14 +113,8 @@
         <aop:pointcut expression ="execution(* com.david.*.service..*.*(..))" id= "pointcut" />
         <aop:advisor advice-ref ="txAdvice" pointcut-ref="pointcut" />
     </aop:config >
-
-
     <!-- Spring工具 -->
     <bean class="com.david.common.spring.SpringUtils"></bean>
-
-    <!-- 调度工厂 -->
-    <!--<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
-    <!--</bean>-->
 
     <!-- 导入shiro配置 -->
     <import resource="classpath:spring-config-shiro.xml"/>
