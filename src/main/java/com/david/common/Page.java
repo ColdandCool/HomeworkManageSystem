@@ -29,7 +29,7 @@ public class Page<T> {
     private List<T> list = Lists.newArrayList();
     private T entity;
 
-    private String orderBy = "a.update_date desc"; // 排序字段
+    private String orderBy = "a.id desc"; // 排序字段
     private String key = "";// 查询关键字
 
     /**
