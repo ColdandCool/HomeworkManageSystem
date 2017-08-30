@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.david.sys.dao.IHomeworkDao">
+
+    <sql id="HomeworkColumns">
+        a.id as "id",
+        a.homework_title as "title",
+        a.homework_content as "content",
+        a.homework_deadline as "deadline",
+        a.create_by as "createBy",
+        a.create_date as "createDate",
+        a.update_by as "updateBy",
+        a.update_date as "updateDate",
+        a.remarks as "remarks",
+        a.status as "status"
+    </sql>
+
+    <select id="get" resultType="com.david.sys.entity.Homework">
+        SELECT
+        <include refid="HomeworkColumns"/>
+        FROM back_homework a
+        WHERE a.id = #{id} and a.status='0'
+    </select>
+
+
+    <select id="findList" resultType="com.david.sys.entity.Homework">
+        SELECT
+        <include refid="HomeworkColumns"/>
+        FROM back_homework a where a.status ='0'
+    </select>
+
+    <select id="count" resultType="int">
+		SELECT count(1) FROM back_homework a WHERE a.status='0'
+	</select>
+
+    <select id="findPage" resultType="com.david.sys.entity.Homework">
+        SELECT
+        <include refid="HomeworkColumns"/>
+        FROM back_homework a where a.status='0'
+        <if test="page.orderBy!=''">
+            ORDER BY ${page.orderBy} LIMIT ${page.pageNo*page.pageSize},${page.pageSize}
+        </if>
+    </select>
+
+    <insert id="insert">
+        insert into back_homework(homework_title,homework_content,homework_deadline,create_by,create_date,remarks)
+        values(#{title},#{content},#{deadline},#{createBy},#{createDate},#{remarks})
+    </insert>
+
+    <update id="update">
+        update back_homework set homework_title=#{title},homework_content=#{content},homework_deadline=#{deadline},
+        update_by=#{updateBy},update_date=#{updateDate},remarks=#{remarks} where id=#{id}
+    </update>
+
+    <delete id="delete">
+        update back_homework set status='1' where id=#{id}
+    </delete>
+
+</mapper>
