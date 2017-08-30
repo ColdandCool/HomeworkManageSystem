@@ -59,6 +59,21 @@ public class UserController extends BaseController {
         model.addAttribute("page", page.setList(userService.findPage(page)));
         return "sys/user/list";
     }
+ /**
+     * 用户列表
+     *
+     * @param model
+     * @param page
+     * @return
+     */
+    @RequiresPermissions("homework:homework:teamadd")
+    @RequestMapping(value = "/teamuser")
+    public String teamuser(User user, Model model, Page<User> page) {
+        //LLL 小组管理人员
+        page.setEntity(user);
+        model.addAttribute("page", page.setList(userService.findPage(page)));
+        return "sys/user/list";
+    }
 
     /**
      * 用户新增
