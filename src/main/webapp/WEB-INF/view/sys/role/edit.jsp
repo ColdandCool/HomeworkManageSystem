@@ -65,8 +65,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="am-form-group" style="display: none;">
-                                    <label class="am-u-sm-3 am-form-label">角色授权：</label>
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">Authorization：</label>
                                     <div class="am-u-sm-9">
                                         <input type="hidden" id="resourceIds" name="resourceIds" value='<c:forEach items="${role.resourceIds}" var="item" varStatus="status">${item}<c:if test="${!status.last}">,</c:if></c:forEach>' />
                                         <ul id="treeOrg" class="ztree" style="margin-top:0; width:200px;height: auto;"></ul>
