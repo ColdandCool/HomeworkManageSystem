@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">Remark：</label>
+                                    <label class="am-u-sm-3 am-form-label">Remarks：</label>
                                     <div class="am-u-sm-9">
                                         <textarea name="remarks">${config.remarks}</textarea>
                                     </div>
