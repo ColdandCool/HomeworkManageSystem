@@ -16,9 +16,7 @@
         a.status as "status"
     </sql>
 
-    <sql id="ConfigJoins">
 
-    </sql>
 
     <select id="get" resultType="com.david.sys.entity.Config">
         SELECT
