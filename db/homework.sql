@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-08-30 12:27:29
+Date: 2017-09-03 12:08:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -250,6 +250,7 @@ CREATE TABLE `sys_user` (
   `login_date` datetime DEFAULT NULL COMMENT '登录时间',
   `locked` tinyint(1) DEFAULT '0' COMMENT '是否锁定',
   `is_dept` tinyint(1) DEFAULT NULL COMMENT '是否部门管理员',
+  `teamleader_id` bigint(20) DEFAULT NULL,
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` bigint(20) DEFAULT NULL COMMENT '修改者',
@@ -258,9 +259,10 @@ CREATE TABLE `sys_user` (
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sys_user_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', null, 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', 'SuperManage', 'a1600783592@gmail.com', '', '11111', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-08-26 15:09:41', '', '0');
+INSERT INTO `sys_user` VALUES ('1', null, 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', 'SuperManage', 'a1600783592@gmail.com', '', '11111', '', null, null, '0', '0', null, '1', '2016-10-15 17:13:38', '1', '2017-08-26 15:09:41', '', '0');
+INSERT INTO `sys_user` VALUES ('2', null, '123', '0dd9ed6f736008be705ff12427ad947b', '9c872f6737ab417d2b8e96fabda72ffd', '', 'asda', 'asda', 'asd', 'asd', null, null, null, '0', '0', '1', '1', '2017-08-30 14:01:48', '1', '2017-08-30 14:01:48', null, '0');

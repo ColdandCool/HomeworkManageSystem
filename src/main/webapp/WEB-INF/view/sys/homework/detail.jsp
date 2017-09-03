@@ -6,7 +6,9 @@
     <%@ include file="../../include/head.jsp" %>
     <link rel="stylesheet" href="${ctxStatic}/3rd-lib/jquery-ztree/css/zTreeStyle.css">
     <style type="text/css">
-        .tpl-content-wrapper{margin-left:0}
+        .tpl-content-wrapper {
+            margin-left: 0
+        }
     </style>
 </head>
 <body>
@@ -18,42 +20,71 @@
             <div class="row">
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                     <div class="widget am-cf">
-                        <div class="widget-head am-cf">
-                            <div class="widget-title am-fl am-left">Homework Info</div>
-                            <div class="widget-title am-fl am-right">Homework Info</div>
-                        </div>
                         <div class="widget-body am-fr">
-                            <div class="am-form tpl-form-border-form">
-                                <input type="hidden" name="id" value="${homework.id}"/>
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label"><span class="error">*</span>Title：</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" name="title" minlength="3" placeholder="Account at least 3 character" value="${homework.title}" readonly/>
+                            <div class="row" style="margin-bottom: 30px">
+                                <article class="am-article">
+                                    <div class="am-article-hd">
+                                        <h1 class="am-article-title">${homework.title}</h1>
+                                        <p class="am-article-meta">createTime：<fmt:formatDate
+                                                value="${homework.createDate}" pattern="yyyy-MM-dd"/></p>
                                     </div>
-                                </div>
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">Content：</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" name="content" placeholder="Name" value="${homework.content}" readonly/>
+                                    <div class="am-article-bd">
+                                        <h3> Content:</h3>
+                                        <p> ${homework.content} </p>
+                                        <h3> Remark:</h3>
+                                        <p> ${homework.remarks}</p>
+                                        <h3> Deadline:</h3>
+                                        <p><fmt:formatDate value="${homework.deadline}" pattern="yyyy-MM-dd"/></p>
                                     </div>
-                                </div>
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">Deadline：</label>
-                                    <div class="am-u-sm-9 am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
-                                        <input type="text" name="deadlineStr" class="am-form-field" placeholder="deadline" value="<fmt:formatDate value="${homework.deadline}" pattern="yyyy-MM-dd" />" readonly>
-                                        <span class="am-input-group-btn am-datepicker-add-on">
-                                            <button class="am-btn am-btn-default" type="button">
-                                                <span class="am-icon-calendar"></span>
-                                            </button>
-                                        </span>
+                                </article>
+                            </div>
+                            <div class="row" style="padding-left: 64px;padding-right: 63px;margin-bottom: 10px;">
+                                <div class="am-form-inline" role="form">
+                                    <div class="am-form-group am-u-sm-11">
+                                        <input id="comment" type="text" class="am-form-field" placeholder="add new comment">
                                     </div>
+                                    <button onclick="submitComment()"  type="submit" class="am-btn am-btn-default">submit</button>
                                 </div>
-                                <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-form-label">Remark：</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" name="Remarks" placeholder="remarks" value="${user.remarks}" readonly/>
-                                    </div>
-                                </div>
+                            </div>
+
+                            <div class="row">
+                                <ul class="am-comments-list am-comments-list-flip">
+                                    <li class="am-comment am-comment-primary">
+                                        <div class="am-comment-main">
+                                            <header class="am-comment-hd">
+                                                <div class="am-comment-meta">
+                                                    <a href="#" class="am-comment-author">某人</a>
+                                                    评论于
+                                                    <time datetime="2013-07-27T04:54:29-07:00"
+                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30
+                                                    </time>
+                                                </div>
+                                            </header>
+
+                                            <div class="am-comment-bd">
+                                                评论内容
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="am-comment am-comment-flip am-comment-secondary">
+                                        <div class="am-comment-main">
+                                            <header class="am-comment-hd">
+                                                <div class="am-comment-meta">
+                                                    <a href="#link-to-user" class="am-comment-author">某人</a>
+                                                    评论于
+                                                    <time datetime="2013-07-27T04:54:29-07:00"
+                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30
+                                                    </time>
+                                                </div>
+                                            </header>
+
+                                            <div class="am-comment-bd">
+                                                评论内容
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -80,6 +111,16 @@
         }
         initSelectValue(true);//初始化下拉框的值
     });
+
+    function submitComment() {
+        var url = "${ctx}/homework/addComment/${homework.id}/"
+        var content = $("#comment").val()
+        showMsg(url)
+        $("#comment").val("")
+        post(url,{"comment":content},function () {
+            alert(1)
+        })
+    }
 </script>
 
 </body>

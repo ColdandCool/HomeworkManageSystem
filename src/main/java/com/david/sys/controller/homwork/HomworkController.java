@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -79,8 +80,8 @@ public class HomworkController extends BaseController {
         Homework homework = homworkService.get(id);
         // LLL delete need to yanzheng data is have
         homworkService.delete(homework);
-        addMessage(redirectAttributes,"Success Delete");
-        return "redirect:"+ adminPath +"/homework/list?pageNo="+pageNo+"&pageSize="+pageSize;
+        addMessage(redirectAttributes, "Success Delete");
+        return "redirect:" + adminPath + "/homework/list?pageNo=" + pageNo + "&pageSize=" + pageSize;
     }
 
     @RequiresPermissions("homework:homework")
@@ -106,5 +107,13 @@ public class HomworkController extends BaseController {
         // LLL 进入到处理分数的页面
         model.addAttribute("homework", homework);
         return "sys/homework/submit";
+    }
+
+    @RequiresPermissions("homework:homework")
+    @RequestMapping(value = "/addComment/{id}", method = RequestMethod.POST)
+    public String addComment(HttpServletResponse response, @PathVariable("id") String id, @RequestBody String comment) {
+        //LLL 1 保存评论 2 拿取新的评论  然后去页面上面进行更新
+
+        return renderString(response, "Success");
     }
 }
