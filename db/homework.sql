@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-09-03 12:08:16
+Date: 2017-09-04 00:27:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `back_homework`;
 CREATE TABLE `back_homework` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `homework_title` varchar(255) NOT NULL COMMENT '作业名字',
-  `homework_content` varchar(255) NOT NULL COMMENT '作业内容',
+  `homework_content` text NOT NULL COMMENT '作业内容',
   `homework_deadline` datetime DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建人',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
@@ -36,7 +36,7 @@ CREATE TABLE `back_homework` (
 -- ----------------------------
 -- Records of back_homework
 -- ----------------------------
-INSERT INTO `back_homework` VALUES ('1', 'aaasda', 'aaa', '2017-09-09 00:00:00', null, null, '1', '2017-08-30 00:16:36', 'asd', '0');
+INSERT INTO `back_homework` VALUES ('1', 'aaasda', '随着一阵拔尖的煞车声，樱子的一生轻轻地飞了起来。缓缓地，飘落在湿冷的街面上，好像一只夜晚的蝴蝶。\r\n\r\n虽然是春天，好像已是秋深了。\r\n\r\n她只是过马路去帮我寄信。这简单的行动，却要叫我终身难忘了。我缓缓睁开眼，茫然站在骑楼下，眼里裹着滚烫的泪水。世上所有的车子都停了下来，人潮涌向马路中央。没有人知道那躺在街面的，就是我的，蝴蝶。这时她只离我五公尺，竟是那么遥远。更大的雨点溅在我的眼镜上，溅到我的生命里来。\r\n\r\n为什么呢？只带一把雨伞？\r\n\r\n然而我又看到樱子穿着白色的风衣，撑着伞，静静地过马路了。她是要帮我寄信的。那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？', '2017-09-09 00:00:00', null, '2017-09-03 23:38:42', '1', '2017-09-03 23:43:59', '文章有几点尤值得我们好好品味。一是作品以“雨”为线索，贯穿全文的始终。悲剧因“雨”而生，小说开篇写“雨”，正是对不幸和灾难起因的一个交代。樱子遭遇不幸后，又写“更大的雨点溅在我的眼镜上', '0');
 
 -- ----------------------------
 -- Table structure for back_homework_comment
