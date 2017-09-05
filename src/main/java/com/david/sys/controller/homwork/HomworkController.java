@@ -6,7 +6,10 @@ import com.david.common.Page;
 import com.david.common.utils.CacheUtils;
 import com.david.common.utils.DateUtils;
 import com.david.common.utils.JStringUtils;
+import com.david.common.utils.UserUtils;
 import com.david.sys.entity.Homework;
+import com.david.sys.entity.HomeworkComment;
+import com.david.sys.service.HomeworkCommentService;
 import com.david.sys.service.HomworkService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,8 @@ public class HomworkController extends BaseController {
 
     @Autowired
     private HomworkService homworkService;
+    @Autowired
+    HomeworkCommentService homeworkCommentService;
 
     @ModelAttribute
     public Homework get(@RequestParam(required = false) String id) {
@@ -88,6 +93,12 @@ public class HomworkController extends BaseController {
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detail(Homework homework, Model model) {
         // LLL 拿出所有的评论，按照评论时间 排序，
+
+        HomeworkComment homeworkComment = new HomeworkComment();
+        homeworkComment.setHomeworkId(homework.getId());
+        List<HomeworkComment> comments = homeworkCommentService.findList(homeworkComment);
+
+        model.addAttribute("comments",comments);
         model.addAttribute("homework", homework);
         return "sys/homework/detail";
     }
@@ -111,9 +122,18 @@ public class HomworkController extends BaseController {
 
     @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/addComment/{id}", method = RequestMethod.POST)
-    public String addComment(HttpServletResponse response, @PathVariable("id") String id, @RequestBody String comment) {
-        //LLL 1 保存评论 2 拿取新的评论  然后去页面上面进行更新
+    public String addComment(HttpServletResponse response, @PathVariable("id") String id, String comment) {
+        HomeworkComment commentObj = new HomeworkComment();
+        commentObj.setContent(comment);
+        commentObj.setHomeworkId(id);
+        commentObj.setUserName(UserUtils.getLoginUserName());
+        commentObj.setTime(new Date());
 
-        return renderString(response, "Success");
+        int count = homeworkCommentService.save(commentObj);
+        if (count > 0) {
+            return renderString(response, "Success");
+        } else {
+            return renderString(response, "fail");
+        }
     }
 }

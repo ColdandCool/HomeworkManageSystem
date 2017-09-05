@@ -49,41 +49,32 @@
 
                             <div class="row">
                                 <ul class="am-comments-list am-comments-list-flip">
-                                    <li class="am-comment am-comment-primary">
-                                        <div class="am-comment-main">
-                                            <header class="am-comment-hd">
-                                                <div class="am-comment-meta">
-                                                    <a href="#" class="am-comment-author">某人</a>
-                                                    评论于
-                                                    <time datetime="2013-07-27T04:54:29-07:00"
-                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30
-                                                    </time>
+                                    <c:forEach items="${comments}" var="item" varStatus="status">
+                                        <c:choose>
+                                            <c:when test="${status.index%2 == 0}">
+                                                <li class="am-comment am-comment-primary">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="am-comment am-comment-flip am-comment-secondary">
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                            <div class="am-comment-main">
+                                                <header class="am-comment-hd">
+                                                    <div class="am-comment-meta">
+                                                        <a href="#" class="am-comment-author">${item.userName}</a>
+                                                        评论于
+                                                        <time datetime="2013-07-27T04:54:29-07:00"><fmt:formatDate value="${item.time}" pattern="yyyy-MM-dd" />
+                                                        </time>
+                                                    </div>
+                                                </header>
+
+                                                <div class="am-comment-bd">
+                                                   ${item.content}
                                                 </div>
-                                            </header>
-
-                                            <div class="am-comment-bd">
-                                                评论内容
                                             </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="am-comment am-comment-flip am-comment-secondary">
-                                        <div class="am-comment-main">
-                                            <header class="am-comment-hd">
-                                                <div class="am-comment-meta">
-                                                    <a href="#link-to-user" class="am-comment-author">某人</a>
-                                                    评论于
-                                                    <time datetime="2013-07-27T04:54:29-07:00"
-                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30
-                                                    </time>
-                                                </div>
-                                            </header>
-
-                                            <div class="am-comment-bd">
-                                                评论内容
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -115,10 +106,9 @@
     function submitComment() {
         var url = "${ctx}/homework/addComment/${homework.id}/"
         var content = $("#comment").val()
-        showMsg(url)
         $("#comment").val("")
-        post(url,{"comment":content},function () {
-            alert(1)
+        post(url,{"comment":content},function (data) {
+            alert(data)
         })
     }
 </script>
