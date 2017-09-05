@@ -5,12 +5,9 @@ import com.david.common.service.CrudService;
 import com.david.common.utils.UserUtils;
 import com.david.sys.dao.IHomeworkDao;
 import com.david.sys.entity.Homework;
-import com.david.sys.entity.HomeworkComment;
-import com.david.sys.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 /**
