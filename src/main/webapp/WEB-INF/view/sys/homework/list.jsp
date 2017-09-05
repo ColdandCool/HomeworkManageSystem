@@ -51,7 +51,16 @@
                                             <td>${status.index+1}</td>
                                             <td>${item.title}</td>
                                             <td><fmt:formatDate value="${item.deadline}" pattern="yyyy-MM-dd" /> </td>
-                                            <td>${item.remarks}</td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${fn:length(item.remarks) > 10}">
+                                                        <c:out value="${fn:substring(item.remarks, 0, 10)}......" />
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value="${item.remarks}" />
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
                                             <td>${item.hasUpload}</td>
                                             <td>
                                                 <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/update?id=${item.id}')" title="Modify"><span class="am-icon-pencil"></span></a>
