@@ -43,4 +43,6 @@ public interface IUserDao extends ICrudDao<User> {
     int findTeamUsersCount(@Param("userID") String userID);
 
 	List<User> findTeamUsersPage(@Param("page") Page<User> page,@Param("userID") String userID);
+
+	List<User> findNoTeamUsers(@Param("id") String id);
 }

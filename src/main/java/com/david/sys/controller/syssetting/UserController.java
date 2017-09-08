@@ -1,6 +1,7 @@
 package com.david.sys.controller.syssetting;
 
 import com.david.common.BaseController;
+import com.david.common.JsonMapper;
 import com.david.common.Page;
 import com.david.common.ResultVo;
 import com.david.common.utils.CacheUtils;
@@ -59,7 +60,8 @@ public class UserController extends BaseController {
         model.addAttribute("page", page.setList(userService.findPage(page)));
         return "sys/user/list";
     }
- /**
+
+    /**
      * 用户列表
      *
      * @param model
@@ -68,11 +70,49 @@ public class UserController extends BaseController {
      */
     @RequiresPermissions("homework:homework:teamadd")
     @RequestMapping(value = "/teamuser")
-    public String teamuser(User user, Model model, Page<User> page) {
+    public String teamuser(Model model, Page<User> page) {
         //LLL 小组管理人员
-        page.setEntity(user);
+        page.setEntity(UserUtils.getLoginUser());
         model.addAttribute("page", page.setList(userService.findTeamUsersPage(page)));
         return "sys/user/list";
+    }
+
+    /**
+     * 小组成员新增页面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/teamuserAddPage", method = RequestMethod.GET)
+    public String teamuserAddPage(User user, Model model) {
+        model.addAttribute("teamUser", user);
+        model.addAttribute("userLsit", userService.findNoTeamUsers(user.getId()));
+        return "sys/user/teamuserAdd";
+    }
+
+    /**
+     * 小组成员新增
+     *
+     * @return
+     */
+    @RequestMapping(value = "/teamuserAdd", method = RequestMethod.GET)
+    public String teamuserAdd(User user) {
+        user.setTeamleaderId(UserUtils.getLoginUser().getId());
+        logger.info("user info : {}", JsonMapper.toJsonString(user));
+        userService.save(user);
+        return "redirect:" + adminPath + "/user/teamuser";
+    }
+
+    /**
+     * 小组成员新增
+     *
+     * @return
+     */
+    @RequestMapping(value = "/teamUserRemove", method = RequestMethod.GET)
+    public String teamUserRemove(User user) {
+        user.setTeamleaderId("-1");
+        userService.save(user);
+        return "redirect:" + adminPath + "/user/teamuser";
     }
 
     /**

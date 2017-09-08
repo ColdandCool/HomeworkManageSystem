@@ -171,4 +171,8 @@ public class UserService extends CrudService<IUserDao, User> {
         page.setTotal(dao.findTeamUsersCount(user.getId()));
         return dao.findTeamUsersPage(page,user.getId());
     }
+
+    public List<User> findNoTeamUsers(String id) {
+        return dao.findNoTeamUsers(id);
+    }
 }

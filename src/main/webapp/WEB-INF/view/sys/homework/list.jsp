@@ -65,7 +65,7 @@
                                             <td>
                                                 <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/update?id=${item.id}')" title="Modify"><span class="am-icon-pencil"></span></a>
                                                 <a href="${ctx}/homework/${item.id}/delete?pageNo=${page.pageNo}&pageSize=${page.pageSize}" onclick="return confirm('Are you sure you want to delete the data?', this.href)" title="Delete"><span class="am-text-danger am-icon-trash-o"></span></a>
-                                                <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/detail?id=${item.id}')" title="Detail"><span class="am-icon-pencil"></span></a>
+                                                <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/detail?id=${item.id}')" title="Detail"><span class="am-icon-plus-square"></span></a>
                                                 <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/submit?id=${item.id}')" title="submit"><span class="am-icon-pencil"></span></a>
                                                 <a href="javascript:;" onclick="openModel(false,'${ctx}/homework/submitgrade?id=${item.id}')" title="Grade"><span class="am-icon-pencil"></span></a>
                                             </td>

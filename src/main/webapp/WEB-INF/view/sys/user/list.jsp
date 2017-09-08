@@ -37,6 +37,10 @@
                                                     onclick="openModel(false,'${ctx}/user/create')">
                                                 <span class="am-icon-plus"></span> ADD
                                             </button>
+                                            <button type="button" class="am-btn am-btn-default am-btn-success"
+                                                    onclick="openModel(false,'${ctx}/user/teamuserAddPage?id=${page.entity.id}')">
+                                                <span class="am-icon-plus"></span> ADD
+                                            </button>
                                         </shiro:hasPermission>
                                     </div>
                                 </div>
@@ -82,6 +86,9 @@
                                                 </shiro:hasPermission>
                                                 <a href="javascript:;" onclick="openModel(false,'${ctx}/user/${user.id}/changePassword')"
                                                    title="ChangePwd"><span class="am-text-success am-icon-key"></span></a>
+                                                <a href="${ctx}/user/teamUserRemove?id=${user.id}"
+                                                   onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
+                                                   title="Delete"><span class="am-icon-times"></span></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
