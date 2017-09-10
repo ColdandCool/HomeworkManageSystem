@@ -202,7 +202,12 @@ public class HomworkController extends BaseController {
     @RequestMapping(value = "/submithomework/{id}", method = RequestMethod.POST)
     public String submithomwork(@RequestParam("file") MultipartFile file, @PathVariable("id") String homeworkid, HttpServletRequest request) {
         // 获取本地存储路径
-        String path = request.getSession().getServletContext().getRealPath(JConfig.getConfig(JConfig.FILEUPLOAD)) + "\\" + homeworkid + "\\";
+        String tempPath = request.getSession().getServletContext().getRealPath(JConfig.getConfig(JConfig.FILEUPLOAD));
+        File tempFile = new File(tempPath);
+        if (!tempFile.exists()) {
+            tempFile.mkdir();
+        }
+        String path = tempPath + "\\" + homeworkid + "\\";
         String filename = path + file.getOriginalFilename();
         File temp = new File(path);
         if (!temp.exists()) {
