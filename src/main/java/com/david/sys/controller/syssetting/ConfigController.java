@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
-* 公共配置表 控制器
-* @author david.cn
-* @version 1.0
-*/
+ * 公共配置表 控制器
+ *
+ * @author david.cn
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("${adminPath}/sys/config")
 public class ConfigController extends BaseController {
@@ -56,8 +57,8 @@ public class ConfigController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Config config, RedirectAttributes redirectAttributes) {
         configService.save(config);
-        addMessage(redirectAttributes,"Success");
-        return "redirect:"+ adminPath +"/sys/config/update?id="+config.getId();
+        addMessage(redirectAttributes, "Success");
+        return "redirect:" + adminPath + "/sys/config/update?id=" + config.getId();
     }
 
     @RequiresPermissions("sys:config:update")
@@ -72,17 +73,17 @@ public class ConfigController extends BaseController {
     public String update(Config config, RedirectAttributes redirectAttributes) {
         configService.save(config);
         CacheUtils.remove(config.getSysName() + config.getModuleName() + config.getConfigName());
-        addMessage(redirectAttributes,"Success");
-        return "redirect:"+ adminPath +"/sys/config/update?id="+config.getId();
+        addMessage(redirectAttributes, "Success");
+        return "redirect:" + adminPath + "/sys/config/update?id=" + config.getId();
     }
 
     @RequiresPermissions("sys:config:delete")
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    public String delete(@PathVariable("id") String id,int pageNo,int pageSize, RedirectAttributes redirectAttributes) {
+    public String delete(@PathVariable("id") String id, int pageNo, int pageSize, RedirectAttributes redirectAttributes) {
         Config config = configService.get(id);
         configService.delete(config);
         CacheUtils.remove(config.getSysName() + config.getModuleName() + config.getConfigName());
-        addMessage(redirectAttributes,"Success Delete");
-        return "redirect:"+ adminPath +"/sys/config?pageNo="+pageNo+"&pageSize="+pageSize;
+        addMessage(redirectAttributes, "Success Delete");
+        return "redirect:" + adminPath + "/sys/config?pageNo=" + pageNo + "&pageSize=" + pageSize;
     }
 }

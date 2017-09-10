@@ -10,7 +10,6 @@ import com.david.common.utils.UserUtils;
 import com.david.sys.entity.Homework;
 import com.david.sys.entity.HomeworkComment;
 import com.david.sys.entity.HomeworkSubmit;
-import com.david.sys.entity.User;
 import com.david.sys.service.HomeworkCommentService;
 import com.david.sys.service.HomeworkSubmitService;
 import com.david.sys.service.HomworkService;
@@ -182,7 +181,7 @@ public class HomworkController extends BaseController {
         try {
             response.reset();
             response.setContentType("application/octet-stream; charset=utf-8");
-            response.setHeader("Content-Disposition", "attachment; filename=" + new String(submit.getFileName().getBytes("UTF-8"),"iso-8859-1"));
+            response.setHeader("Content-Disposition", "attachment; filename=" + new String(submit.getFileName().getBytes("UTF-8"), "iso-8859-1"));
             out = response.getOutputStream();
             out.write(FileUtils.readFileToByteArray(file));
             out.flush();

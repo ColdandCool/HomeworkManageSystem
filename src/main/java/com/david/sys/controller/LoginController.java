@@ -156,10 +156,10 @@ public class LoginController extends BaseController {
         String newPassword = "123456";
         try {
             userService.changePassword(user, newPassword);
-            String context ="the new password is :"+newPassword + ",please log in and change the password!";
-            SpringMailUtil.sendTextMail(email,"Retrieve the password",context);
+            String context = "the new password is :" + newPassword + ",please log in and change the password!";
+            SpringMailUtil.sendTextMail(email, "Retrieve the password", context);
         } catch (Exception e) {
-            logger.error("send mail error,ther msg is :{}",e.toString());
+            logger.error("send mail error,ther msg is :{}", e.toString());
             addMessage(model, "The server is out Please try again later");
             return "forgetpassword";
         }
