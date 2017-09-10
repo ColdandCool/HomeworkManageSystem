@@ -20,6 +20,12 @@
         FROM back_homework_submit a
         WHERE a.id = #{id} and a.status='0'
     </select>
+    <select id="findByHomeworkIDandUserID" resultType="com.david.sys.entity.HomeworkSubmit">
+        SELECT
+        <include refid="Columns"/>
+        FROM back_homework_submit a
+        WHERE a.homework_id = #{homeworkID} and a.user_id=#{userID} and a.status='0'
+    </select>
 
 
     <select id="findList" resultType="com.david.sys.entity.HomeworkSubmit">
@@ -48,11 +54,12 @@
 
     <update id="update">
         update back_homework_submit set homework_id=#{homeworkId},user_id=#{userid},user_name=#{username},
-        homework_grade=#{grade},file_name=#{fileName},update_date=#{updateDate},file_url=#{fileUrl} where id=#{id}
+        homework_grade=#{grade},file_name=#{fileName},file_url=#{fileUrl} where id=#{id}
     </update>
 
     <delete id="delete">
         update back_homework_submit set status='1' where id=#{id}
     </delete>
+
 
 </mapper>

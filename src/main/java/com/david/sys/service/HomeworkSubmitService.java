@@ -7,6 +7,8 @@ import com.david.sys.entity.HomeworkSubmit;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+
 /**
  * Created by david on 2017/9/6.
  */
@@ -15,4 +17,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class HomeworkSubmitService extends CrudService<IHomeworkSubmitDao, HomeworkSubmit> {
 
 
+    public HomeworkSubmit findByHomeworkIDandUserID(String homeworkID,String userID){
+        return dao.findByHomeworkIDandUserID(homeworkID,userID);
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+    public int save(HomeworkSubmit entity) {
+        HomeworkSubmit old = findByHomeworkIDandUserID(entity.getHomeworkId(),entity.getUserid());
+          if (old == null){
+              entity.preInsert();
+              return dao.insert(entity);
+          }else {
+              entity.setId(old.getId());
+              new File(old.getFileUrl()).delete();
+              return dao.update(entity);
+          }
+    }
 }

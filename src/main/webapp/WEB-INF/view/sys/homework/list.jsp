@@ -77,9 +77,6 @@
                                                 <a href="javascript:;"
                                                    onclick="openModel(false,'${ctx}/homework/detail?id=${item.id}')"
                                                    title="Detail"><span class="am-icon-retweet"></span></a>
-                                                <a href="javascript:;"
-                                                   onclick="openModel(false,'${ctx}/homework/submit?id=${item.id}')"
-                                                   title="submit"><span class="am-icon-cloud"></span></a>
                                                 <a href="${ctx}/homework/${item.id}/submitgrade" title="Grade"><span
                                                         class="am-icon-check"></span></a>
                                             </td>
