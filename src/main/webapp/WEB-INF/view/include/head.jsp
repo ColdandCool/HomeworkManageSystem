@@ -15,3 +15,4 @@
     .color-form-group{margin: 0;}
 </style>
 <c:set var="loginUser" value="${fnc:getLoginUser()}"></c:set>
+<c:set var="weather" value="${fnc:getWeather()}"></c:set>

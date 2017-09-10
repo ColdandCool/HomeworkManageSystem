@@ -25,7 +25,6 @@ public class IndexController extends BaseController {
 
     @Autowired
     private ResourceService resourceService;
-
     @Autowired
     private UserService userService;
 

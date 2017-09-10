@@ -42,6 +42,12 @@
         <function-class>com.david.common.taglib.Functions</function-class>
         <function-signature>com.david.sys.entity.User getLoginUser()</function-signature>
     </function>
+    <function>
+        <description>获取天气信息</description>
+        <name>getWeather</name>
+        <function-class>com.david.common.taglib.Functions</function-class>
+        <function-signature>com.david.sys.entity.Weather getWeather()</function-signature>
+    </function>
 
     <function>
         <description>获取系统文件配置</description>

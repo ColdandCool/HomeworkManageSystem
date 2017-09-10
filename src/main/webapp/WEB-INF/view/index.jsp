@@ -29,47 +29,14 @@
             <!-- 其它功能-->
             <div class="am-fr tpl-header-navbar">
                 <ul>
+                    <!-- weather -->
+                    <li class="am-text-sm">
+                       <a>Weather in Sydney, AU,<span>${empty weather?weather.temp:weather.temp}</span>℃</a>
+                    </li>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
                         <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Hello,
                             <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
-                    </li>
-                    <!-- 新邮件 -->
-                    <li class="am-dropdown tpl-dropdown" data-am-dropdown id="mail" style="display: none">
-                        <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
-                            <i class="am-icon-envelope"></i>
-                            <span class="am-badge am-badge-success am-round item-feed-badge" id="mailBadge"
-                                  style="display: none;">0</span>
-                        </a>
-                        <!-- 弹出列表 -->
-                        <ul class="am-dropdown-content tpl-dropdown-content" id="mailHtml">
-                            <li class="tpl-dropdown-menu-messages">
-                                <a href="#${ctx}/sys/msgReceive?msgSend.type=mail&status=-1"
-                                   onclick="link('${ctx}/sys/msgReceive?msgSend.type=mail&status=-1');$('#mail').dropdown('close');"
-                                   class="tpl-dropdown-menu-messages-item am-cf">
-                                    <i class="am-icon-circle-o"></i> into list…
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- 新提示 -->
-                    <li class="am-dropdown" data-am-dropdown id="notice" style="display: none">
-                        <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
-                            <i class="am-icon-bell"></i>
-                            <span class="am-badge am-badge-warning am-round item-feed-badge" id="noticeBadge"
-                                  style="display: none;">0</span>
-                        </a>
-                        <!-- 弹出列表 -->
-                        <ul class="am-dropdown-content tpl-dropdown-content" id="noticeHtml">
-                            <li class="tpl-dropdown-menu-notifications">
-                                <a href="#${ctx}/sys/msgReceive?msgSend.type=notice&status=-1"
-                                   onclick="link('${ctx}/sys/msgReceive?msgSend.type=notice&status=-1');$('#notice').dropdown('close');"
-                                   class="tpl-dropdown-menu-notifications-item am-cf">
-                                    <i class="am-icon-bell"></i> into list…
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <!-- 退出 -->
                     <li class="am-text-sm">

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-09-04 00:27:20
+Date: 2017-09-10 21:42:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,12 +31,13 @@ CREATE TABLE `back_homework` (
   `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homeworkTable';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homeworkTable';
 
 -- ----------------------------
 -- Records of back_homework
 -- ----------------------------
 INSERT INTO `back_homework` VALUES ('1', 'aaasda', '随着一阵拔尖的煞车声，樱子的一生轻轻地飞了起来。缓缓地，飘落在湿冷的街面上，好像一只夜晚的蝴蝶。\r\n\r\n虽然是春天，好像已是秋深了。\r\n\r\n她只是过马路去帮我寄信。这简单的行动，却要叫我终身难忘了。我缓缓睁开眼，茫然站在骑楼下，眼里裹着滚烫的泪水。世上所有的车子都停了下来，人潮涌向马路中央。没有人知道那躺在街面的，就是我的，蝴蝶。这时她只离我五公尺，竟是那么遥远。更大的雨点溅在我的眼镜上，溅到我的生命里来。\r\n\r\n为什么呢？只带一把雨伞？\r\n\r\n然而我又看到樱子穿着白色的风衣，撑着伞，静静地过马路了。她是要帮我寄信的。那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？', '2017-09-09 00:00:00', null, '2017-09-03 23:38:42', '1', '2017-09-03 23:43:59', '文章有几点尤值得我们好好品味。一是作品以“雨”为线索，贯穿全文的始终。悲剧因“雨”而生，小说开篇写“雨”，正是对不幸和灾难起因的一个交代。樱子遭遇不幸后，又写“更大的雨点溅在我的眼镜上', '0');
+INSERT INTO `back_homework` VALUES ('2', 'ASDsd', 'ASDFASFAD', '2017-09-06 00:00:00', '1', '2017-09-06 01:08:38', null, null, 'ASDAFSD', '0');
 
 -- ----------------------------
 -- Table structure for back_homework_comment
@@ -53,11 +54,16 @@ CREATE TABLE `back_homework_comment` (
   `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homeworkCommont';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homeworkCommont';
 
 -- ----------------------------
 -- Records of back_homework_comment
 -- ----------------------------
+INSERT INTO `back_homework_comment` VALUES ('6', '1', 'adsad', '2017-09-06 00:55:27', 'super', '1', '2017-09-06 00:55:27', null, '0');
+INSERT INTO `back_homework_comment` VALUES ('7', '1', 'asdfa', '2017-09-06 01:06:55', 'super', '1', '2017-09-06 01:06:55', null, '0');
+INSERT INTO `back_homework_comment` VALUES ('8', '1', 'asdasdfadfa', '2017-09-06 01:07:33', 'super', '1', '2017-09-06 01:07:33', null, '0');
+INSERT INTO `back_homework_comment` VALUES ('9', '1', 'asdafsdaf', '2017-09-06 01:07:48', 'super', '1', '2017-09-06 01:07:48', null, '0');
+INSERT INTO `back_homework_comment` VALUES ('10', '2', 'xC的示范法', '2017-09-06 01:08:45', 'super', '1', '2017-09-06 01:08:45', null, '0');
 
 -- ----------------------------
 -- Table structure for back_homework_submit
@@ -67,12 +73,14 @@ CREATE TABLE `back_homework_submit` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `homework_id` bigint(20) NOT NULL COMMENT '作业名字',
   `user_id` bigint(20) NOT NULL COMMENT '作业名字',
-  `homework_grade` int(10) NOT NULL COMMENT '作业内容',
-  `submit_name` varchar(255) DEFAULT NULL COMMENT '作业内容',
-  `submit_url` varchar(255) DEFAULT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `homework_grade` int(10) DEFAULT NULL COMMENT '作业内容',
+  `file_name` varchar(255) DEFAULT NULL COMMENT '作业内容',
+  `file_url` varchar(255) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homework submit';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='homework submit';
 
 -- ----------------------------
 -- Records of back_homework_submit
@@ -250,7 +258,7 @@ CREATE TABLE `sys_user` (
   `login_date` datetime DEFAULT NULL COMMENT '登录时间',
   `locked` tinyint(1) DEFAULT '0' COMMENT '是否锁定',
   `is_dept` tinyint(1) DEFAULT NULL COMMENT '是否部门管理员',
-  `teamleader_id` bigint(20) DEFAULT NULL,
+  `teamleader_id` int(20) DEFAULT '-1',
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` bigint(20) DEFAULT NULL COMMENT '修改者',
@@ -259,10 +267,11 @@ CREATE TABLE `sys_user` (
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sys_user_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', null, 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', 'SuperManage', 'a1600783592@gmail.com', '', '11111', '', null, null, '0', '0', null, '1', '2016-10-15 17:13:38', '1', '2017-08-26 15:09:41', '', '0');
-INSERT INTO `sys_user` VALUES ('2', null, '123', '0dd9ed6f736008be705ff12427ad947b', '9c872f6737ab417d2b8e96fabda72ffd', '', 'asda', 'asda', 'asd', 'asd', null, null, null, '0', '0', '1', '1', '2017-08-30 14:01:48', '1', '2017-08-30 14:01:48', null, '0');
+INSERT INTO `sys_user` VALUES ('1', null, 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', 'SuperManage', 'a1600783592@gmail.com', '', '11111', '', null, null, '0', '0', '1', '1', '2016-10-15 17:13:38', '1', '2017-09-10 20:29:57', '', '0');
+INSERT INTO `sys_user` VALUES ('2', null, '123', '0dd9ed6f736008be705ff12427ad947b', '9c872f6737ab417d2b8e96fabda72ffd', '', 'asda', 'asda', 'asd', 'asd', null, null, null, '0', '0', '1', '1', '2017-08-30 14:01:48', '1', '2017-09-08 23:41:18', null, '0');
+INSERT INTO `sys_user` VALUES ('3', null, 'asdfasd', 'ffa3d73b01d26ab38bdb852797566c88', '606aa5093dacaaad2dc74c2da4944176', '2,', 'asda', 'asda', '12312', '123123', null, null, null, '0', '0', '-1', '1', '2017-09-08 23:22:52', '1', '2017-09-08 23:40:15', null, '0');
