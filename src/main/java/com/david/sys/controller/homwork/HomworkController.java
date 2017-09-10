@@ -156,22 +156,24 @@ public class HomworkController extends BaseController {
      */
     @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/{id}/submitgrade", method = RequestMethod.GET)
-    public String submitgrade(@PathVariable("id") String homeworkid, Model model, Page<User> page) {
-
-        logger.info("submitgrade | homeworkid:{}", homeworkid);
-
-        /*
-        拿到作业列表 拿到 改作业列表中 是这个人批的那些人的作业 也就是说 首先拿到人，然后根据人去哪作业 然后作业遍历 将信息显示在页面上，
-         */
-
-
+    public String toGradePage(@PathVariable("id") String homeworkid, Model model) {
+        HomeworkSubmit submit = homeworkSubmitService.get(homeworkid);
+        model.addAttribute("data", homeworkSubmitService.findList(submit));
         return "sys/homework/usergrade";
+    }
+
+    @RequiresPermissions("sys:user:update")
+    @RequestMapping(value = "/setGrade/{id}/{grade}", method = RequestMethod.GET)
+    public String submitGrade(@PathVariable("id") String homeworkid,@PathVariable("grade")Integer grade) {
+        HomeworkSubmit submit = homeworkSubmitService.get(homeworkid);
+        submit.setGrade(grade);
+        homeworkSubmitService.save(submit);
+        return "redirect:" + adminPath + "/homework/"+submit.getHomeworkId()+"/submitgrade";
     }
 
     @ResponseBody
     @RequestMapping(value = "/submithomework/{id}", method = RequestMethod.POST)
     public String submithomwork(@RequestParam("file") MultipartFile file, @PathVariable("id") String homeworkid, HttpServletRequest request) {
-
         // 获取本地存储路径
         String path = request.getSession().getServletContext().getRealPath(JConfig.getConfig(JConfig.FILEUPLOAD)) + "\\" + homeworkid + "\\";
         String filename = path + file.getOriginalFilename();
@@ -186,6 +188,7 @@ public class HomworkController extends BaseController {
             submit.setFileUrl(filename);
             submit.setHomeworkId(homeworkid);
             submit.setUserid(UserUtils.getLoginUser().getId());
+            submit.setUsername(UserUtils.getLoginUserName());
             homeworkSubmitService.save(submit);
             return "Success";
         } catch (IOException e) {

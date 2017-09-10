@@ -17,21 +17,25 @@ import java.io.File;
 public class HomeworkSubmitService extends CrudService<IHomeworkSubmitDao, HomeworkSubmit> {
 
 
-    public HomeworkSubmit findByHomeworkIDandUserID(String homeworkID,String userID){
-        return dao.findByHomeworkIDandUserID(homeworkID,userID);
+    public HomeworkSubmit findByHomeworkIDandUserID(String homeworkID, String userID) {
+        return dao.findByHomeworkIDandUserID(homeworkID, userID);
     }
 
     @Override
     @Transactional(readOnly = false)
     public int save(HomeworkSubmit entity) {
-        HomeworkSubmit old = findByHomeworkIDandUserID(entity.getHomeworkId(),entity.getUserid());
-          if (old == null){
-              entity.preInsert();
-              return dao.insert(entity);
-          }else {
-              entity.setId(old.getId());
-              new File(old.getFileUrl()).delete();
-              return dao.update(entity);
-          }
+        if (entity.getIsNewId()) {
+            HomeworkSubmit old = findByHomeworkIDandUserID(entity.getHomeworkId(), entity.getUserid());
+            if (old == null) {
+                entity.preInsert();
+                return dao.insert(entity);
+            } else {
+                entity.setId(old.getId());
+                new File(old.getFileUrl()).delete();
+                return dao.update(entity);
+            }
+        } else {
+            return dao.update(entity);
+        }
     }
 }

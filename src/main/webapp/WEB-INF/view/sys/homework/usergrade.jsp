@@ -32,35 +32,32 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Account</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Tel</th>
+                                        <th>UserName</th>
+                                        <th>Grade</th>
+                                        <th>FileName</th>
+                                        <th>SubmitDate</th>
                                         <th>Operation</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${page.list}" var="user" varStatus="status">
+                                    <c:forEach items="${data}" var="item" varStatus="status">
                                         <tr>
                                             <td>${status.index+1}</td>
-                                            <td>${user.username}</td>
-                                            <td>${user.name}</td>
-                                            <td>${user.email}</td>
-                                            <td>${user.mobile}</td>
+                                            <td>${item.username}</td>
+                                            <td>${item.grade}</td>
+                                            <td>${item.fileName}</td>
+                                            <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd"/></td>
                                             <td>
                                                 <shiro:hasPermission name="sys:user:delete">
-                                                    <a href="${ctx}/user/teamuserAdd?id=${user.id}"
-                                                       onclick="return confirm('Are you sure you want to add this user to your team?', this.href)"
-                                                       title="ADD"><span class="am-icon-plus"></span></a>
+                                                    <a href="#"
+                                                       onclick="promptData('${ctx}/homework/setGrade/${item.id}')"
+                                                       title="Grade"><span class="am-icon-check"></span></a>
                                                 </shiro:hasPermission>
                                             </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="am-u-lg-12 am-cf">
-                                <%@ include file="../../utils/pagination.jsp" %>
                             </div>
                         </div>
                     </div>
