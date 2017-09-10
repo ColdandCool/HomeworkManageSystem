@@ -14,6 +14,7 @@ import com.david.sys.entity.User;
 import com.david.sys.service.HomeworkCommentService;
 import com.david.sys.service.HomeworkSubmitService;
 import com.david.sys.service.HomworkService;
+import org.apache.commons.io.FileUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -164,11 +166,37 @@ public class HomworkController extends BaseController {
 
     @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/setGrade/{id}/{grade}", method = RequestMethod.GET)
-    public String submitGrade(@PathVariable("id") String homeworkid,@PathVariable("grade")Integer grade) {
+    public String submitGrade(@PathVariable("id") String homeworkid, @PathVariable("grade") Integer grade) {
         HomeworkSubmit submit = homeworkSubmitService.get(homeworkid);
         submit.setGrade(grade);
         homeworkSubmitService.save(submit);
-        return "redirect:" + adminPath + "/homework/"+submit.getHomeworkId()+"/submitgrade";
+        return "redirect:" + adminPath + "/homework/" + submit.getHomeworkId() + "/submitgrade";
+    }
+
+    @RequiresPermissions("sys:user:update")
+    @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
+    public void submitGrade(@PathVariable("id") String id, HttpServletResponse response) {
+        HomeworkSubmit submit = homeworkSubmitService.get(id);
+        File file = new File(submit.getFileUrl());
+        OutputStream out = null;
+        try {
+            response.reset();
+            response.setContentType("application/octet-stream; charset=utf-8");
+            response.setHeader("Content-Disposition", "attachment; filename=" + new String(submit.getFileName().getBytes("UTF-8"),"iso-8859-1"));
+            out = response.getOutputStream();
+            out.write(FileUtils.readFileToByteArray(file));
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @ResponseBody

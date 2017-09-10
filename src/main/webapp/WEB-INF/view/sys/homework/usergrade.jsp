@@ -53,6 +53,8 @@
                                                        onclick="promptData('${ctx}/homework/setGrade/${item.id}')"
                                                        title="Grade"><span class="am-icon-check"></span></a>
                                                 </shiro:hasPermission>
+                                                <a href="${ctx}/homework/download/${item.id}" title="download"><span
+                                                        class="am-icon-download"></span></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
