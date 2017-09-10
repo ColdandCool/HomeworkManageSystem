@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.david.sys.dao.IHomeworkSubmitDao">
+
+    <sql id="Columns">
+        a.id as "id",
+        a.homework_id as "homeworkId",
+        a.user_id as "userid",
+        a.user_name as "username",
+        a.homework_grade as "grade",
+        a.file_name as "fileName",
+        a.file_url as "fileUrl",
+        a.create_date as "createDate",
+        a.status as "status"
+    </sql>
+
+    <select id="get" resultType="com.david.sys.entity.HomeworkSubmit">
+        SELECT
+        <include refid="Columns"/>
+        FROM back_homework_submit a
+        WHERE a.id = #{id} and a.status='0'
+    </select>
+
+
+    <select id="findList" resultType="com.david.sys.entity.HomeworkSubmit">
+        SELECT
+        <include refid="Columns"/>
+        FROM back_homework_submit a where a.status ='0' and a.homework_id=#{homeworkId}
+    </select>
+
+    <select id="count" resultType="int">
+		SELECT count(1) FROM back_homework_submit a WHERE a.status='0'
+	</select>
+
+    <select id="findPage" resultType="com.david.sys.entity.HomeworkSubmit">
+        SELECT
+        <include refid="Columns"/>
+        FROM back_homework_submit a where a.status='0'
+        <if test="page.orderBy!=''">
+            ORDER BY ${page.orderBy} LIMIT ${page.pageNo*page.pageSize},${page.pageSize}
+        </if>
+    </select>
+
+    <insert id="insert">
+        insert into back_homework_submit(homework_id,user_id,user_name,homework_grade,file_name,file_url,create_date)
+        values(#{homeworkId},#{userid},#{username},#{grade},#{fileName},#{fileUrl},#{createDate})
+    </insert>
+
+    <update id="update">
+        update back_homework_submit set homework_id=#{homeworkId},user_id=#{userid},user_name=#{username},
+        homework_grade=#{grade},file_name=#{fileName},update_date=#{updateDate},file_url=#{fileUrl} where id=#{id}
+    </update>
+
+    <delete id="delete">
+        update back_homework_submit set status='1' where id=#{id}
+    </delete>
+
+</mapper>

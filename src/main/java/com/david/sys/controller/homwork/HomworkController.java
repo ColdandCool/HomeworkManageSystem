@@ -3,21 +3,29 @@ package com.david.sys.controller.homwork;
 import com.david.common.BaseController;
 import com.david.common.JsonMapper;
 import com.david.common.Page;
+import com.david.common.config.JConfig;
 import com.david.common.utils.DateUtils;
 import com.david.common.utils.JStringUtils;
 import com.david.common.utils.UserUtils;
 import com.david.sys.entity.Homework;
 import com.david.sys.entity.HomeworkComment;
+import com.david.sys.entity.HomeworkSubmit;
+import com.david.sys.entity.User;
 import com.david.sys.service.HomeworkCommentService;
+import com.david.sys.service.HomeworkSubmitService;
 import com.david.sys.service.HomworkService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +40,8 @@ public class HomworkController extends BaseController {
     private HomworkService homworkService;
     @Autowired
     HomeworkCommentService homeworkCommentService;
+    @Autowired
+    HomeworkSubmitService homeworkSubmitService;
 
     @ModelAttribute
     public Homework get(@RequestParam(required = false) String id) {
@@ -97,7 +107,7 @@ public class HomworkController extends BaseController {
         homeworkComment.setHomeworkId(homework.getId());
         List<HomeworkComment> comments = homeworkCommentService.findList(homeworkComment);
 
-        model.addAttribute("comments",comments);
+        model.addAttribute("comments", comments);
         model.addAttribute("homework", homework);
         return "sys/homework/detail";
     }
@@ -133,6 +143,60 @@ public class HomworkController extends BaseController {
             return renderString(response, "Success");
         } else {
             return renderString(response, "fail");
+        }
+    }
+
+
+    /**
+     * 进入修改分数的页面
+     *
+     * @param homeworkid
+     * @param model
+     * @return
+     */
+    @RequiresPermissions("sys:user:update")
+    @RequestMapping(value = "/{id}/submitgrade", method = RequestMethod.GET)
+    public String submitgrade(@PathVariable("id") String homeworkid, Model model, Page<User> page) {
+
+        logger.info("submitgrade | homeworkid:{}", homeworkid);
+
+        /*
+        拿到作业列表 拿到 改作业列表中 是这个人批的那些人的作业 也就是说 首先拿到人，然后根据人去哪作业 然后作业遍历 将信息显示在页面上，
+         */
+
+
+        return "sys/homework/usergrade";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/submithomework/{id}", method = RequestMethod.POST)
+    public String submithomwork(@RequestParam("file") MultipartFile file, @PathVariable("id") String homeworkid, HttpServletRequest request) {
+        logger.info("上传文件名字2：{},id:{}", file.getOriginalFilename(), homeworkid);
+
+        // 获取本地存储路径
+        String path = request.getSession().getServletContext().getRealPath(JConfig.getConfig(JConfig.FILEUPLOAD)) + "\\" + homeworkid + "\\";
+        String filename = path + file.getOriginalFilename();
+        File temp = new File(path);
+        if (!temp.exists()) {
+            temp.mkdir();
+        }
+        logger.info("路径:{}", filename);
+        try {
+            file.transferTo(new File(filename));
+
+            HomeworkSubmit submit = new HomeworkSubmit();
+            submit.setFileName(file.getOriginalFilename());
+            submit.setFileUrl(filename);
+            submit.setHomeworkId(homeworkid);
+            submit.setUserid(UserUtils.getLoginUser().getId());
+
+            logger.info(JsonMapper.toJsonString(submit));
+
+            homeworkSubmitService.save(submit);
+            return "Success";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "fail";
         }
     }
 }

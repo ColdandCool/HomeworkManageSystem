@@ -89,6 +89,10 @@
                                                 <a href="${ctx}/user/teamUserRemove?id=${user.id}"
                                                    onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
                                                    title="Delete"><span class="am-icon-times"></span></a>
+
+                                                <a href="${ctx}/user/download?id=${user.id}&homeworkid=${1}"
+                                                   onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
+                                                   title="Delete"><span class="am-icon-times"></span></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
