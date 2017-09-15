@@ -12,14 +12,14 @@
 	<li class="<c:if test="${page.hasLastPage}">am-disabled</c:if>"><a href="javascript:page(${page.last});"><i class="am-icon-fast-forward"></i></a></li>
 </ul>
 <script type="text/javascript">
-     //分页查询
+     //Paging query
      function page(n){
 		$("#pageNo").val(n);
 		$("#searchForm").submit();
      	return false;
      }
 
-	//排序方法
+	//Sorting method
 	function order(by){
 		var orderBy = $("#orderBy").val();
 		if(orderBy.indexOf(by)>-1){
@@ -30,7 +30,7 @@
 				$("#orderBy").val(by+" desc");
 			}
 		}else{
-			//第一次进入
+			//First time to enter
 			$("#orderBy").val(by+" desc");
 		}
 		$("#pageNo").val(0);

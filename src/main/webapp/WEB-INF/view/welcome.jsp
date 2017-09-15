@@ -12,7 +12,7 @@
 </head>
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
-<!-- 内容区域 -->
+<!-- Content area -->
 <div class="tpl-content-wrapper">
 	<div class="row-content am-cf">
 		<div class="am-u-sm-12 am-u-md-6" style="display: none">

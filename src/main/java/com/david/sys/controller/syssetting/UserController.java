@@ -47,7 +47,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户列表
+     * user list
      *
      * @param model
      * @param page
@@ -62,7 +62,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户列表
+     * user list
      *
      * @param model
      * @param page
@@ -78,7 +78,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 小组成员新增页面
+     * Team members add pages
      *
      * @param model
      * @return
@@ -91,7 +91,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 小组成员新增
+     * Group members added
      *
      * @return
      */
@@ -104,7 +104,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 小组成员新增
+     * Group members added
      *
      * @return
      */
@@ -116,7 +116,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户新增
+     * add user
      *
      * @param model
      * @return
@@ -132,7 +132,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户新增保存
+     * add user save
      *
      * @param user
      * @param redirectAttributes
@@ -148,7 +148,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户修改
+     * user modify
      *
      * @param user
      * @param model
@@ -165,7 +165,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户修改保存
+     * modify save
      *
      * @param user
      * @param redirectAttributes
@@ -174,7 +174,6 @@ public class UserController extends BaseController {
     @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(User user, RedirectAttributes redirectAttributes) {
-        //不是部门经理，不能修改，超级管理员可以修改，自己的信息可以修改
         User loginUser = UserUtils.getLoginUser();
         if (loginUser.isAdmin() || user.getId().equals(loginUser.getId()) || loginUser.getIsDept()) {
             userService.save(user);
@@ -187,7 +186,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户删除
+     * remove user
      *
      * @param user
      * @param redirectAttributes
@@ -208,7 +207,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 修改密码
+     * modify password
      *
      * @param id
      * @param model
@@ -223,7 +222,7 @@ public class UserController extends BaseController {
 
 
     /**
-     * 修改密码保存
+     * modify password save
      *
      * @param id
      * @param password
@@ -246,7 +245,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 修改密码保存
+     * modify password save
      *
      * @param newPassword
      * @return
@@ -267,7 +266,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户资料
+     * user resource
      *
      * @param model
      * @return
@@ -280,7 +279,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 保存用户资料
+     * Save user data
      *
      * @param user
      * @param model
@@ -296,9 +295,9 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户选择弹出界面
+     * The user selects the pop-up interface
      *
-     * @param users 选择用户列表
+     * @param users Select the user list
      * @param user
      * @param model
      * @param page
@@ -313,7 +312,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 获取用户列表
+     * Get the user list
      *
      * @param users
      * @return
@@ -327,7 +326,7 @@ public class UserController extends BaseController {
             List<Map> list = userService.getUsers(users);
             resultVo = new ResultVo(ResultVo.SUCCESS, "1", "Success", list);
         } catch (Exception e) {
-            logger.error("获取用户列表调用失败", e.getMessage());
+            logger.error("Failed to get user list call", e.getMessage());
             resultVo = new ResultVo(ResultVo.FAILURE, "-1", "Fail", null);
         }
         return resultVo;

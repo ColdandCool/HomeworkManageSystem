@@ -1,12 +1,12 @@
 package com.david.sys.entity.enums;
 
 /**
- * 数据范围
+ * data range
  * @author David
  */
 public enum DataScopeEnum {
 
-	all("所有数据"),orgFollow("所在机构及以下数据"), org("所在机构数据"),self("仅本人数据");
+	all("All data"),orgFollow("The organization and the following data"), org("Where the organization data"),self("Only my own data");
 
 	private final String info;
 

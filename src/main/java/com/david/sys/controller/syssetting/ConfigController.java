@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * 公共配置表 控制器
+ * Public configuration table controller
  *
  * @author david.cn
  * @version 1.0

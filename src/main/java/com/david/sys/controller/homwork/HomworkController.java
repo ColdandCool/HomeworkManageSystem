@@ -102,8 +102,6 @@ public class HomworkController extends BaseController {
     @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detail(Homework homework, Model model) {
-        // LLL 拿出所有的评论，按照评论时间 排序，
-
         HomeworkComment homeworkComment = new HomeworkComment();
         homeworkComment.setHomeworkId(homework.getId());
         List<HomeworkComment> comments = homeworkCommentService.findList(homeworkComment);
@@ -116,16 +114,15 @@ public class HomworkController extends BaseController {
     @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/submit", method = RequestMethod.GET)
     public String submit(Homework homework, Model model) {
-        // LLL 进入到上传页面
+        // LLL Go to the upload page
         model.addAttribute("homework", homework);
         return "sys/homework/submit";
     }
 
-    //LLL todo
     @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/submitgrade", method = RequestMethod.GET)
     public String submitgrade(Homework homework, Model model) {
-        // LLL 进入到处理分数的页面
+        // LLL Go to the page where the score is processed
         model.addAttribute("homework", homework);
         return "sys/homework/submit";
     }
@@ -149,7 +146,7 @@ public class HomworkController extends BaseController {
 
 
     /**
-     * 进入修改分数的页面
+     * Go to the page that modifies the score
      *
      * @param homeworkid
      * @param model
@@ -201,7 +198,7 @@ public class HomworkController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/submithomework/{id}", method = RequestMethod.POST)
     public String submithomwork(@RequestParam("file") MultipartFile file, @PathVariable("id") String homeworkid, HttpServletRequest request) {
-        // 获取本地存储路径
+        // Get the local storage path
         String tempPath = request.getSession().getServletContext().getRealPath(JConfig.getConfig(JConfig.FILEUPLOAD));
         File tempFile = new File(tempPath);
         if (!tempFile.exists()) {

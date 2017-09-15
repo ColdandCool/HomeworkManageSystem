@@ -8,7 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * 用户访问验证
+ * User access verification
  *
  * @author david.cn
  * @version 1.0
@@ -18,7 +18,7 @@ public class UserAccessFilter extends AccessControlFilter {
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
 
-        return true;// true表示允许访问 false表示拒绝访问，进入onAccessDenied方法处理
+        return true;// true means to allow access to false means to deny access to the onAccessDenied method
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 资源服务
+ * Resource service
  * 
  * @author David
  */
@@ -24,7 +24,7 @@ import java.util.Set;
 public class ResourceService extends CrudService<IResourceDao, Resource> {
 
 	/**
-	 * 获取权限标识
+	 * Get the permission ID
 	 * @param resourceIds
 	 * @return
 	 */
@@ -42,7 +42,7 @@ public class ResourceService extends CrudService<IResourceDao, Resource> {
 	}
 
 	/**
-	 * 获取菜单
+	 * Get the menu
 	 * @param permissions
 	 * @return
 	 */
@@ -65,7 +65,7 @@ public class ResourceService extends CrudService<IResourceDao, Resource> {
 	}
 
 	/**
-	 * 获取角色菜单
+	 * Get the role menu
 	 * @param permissions
 	 * @return
 	 */
@@ -100,7 +100,7 @@ public class ResourceService extends CrudService<IResourceDao, Resource> {
 	}
 
 	/**
-	 * 查询是否存在子节点
+	 * Query whether there are child nodes
 	 * @param resource
 	 * @return
 	 */

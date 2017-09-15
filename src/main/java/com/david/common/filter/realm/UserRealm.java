@@ -11,7 +11,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * 用户权限认证
+ * User rights authentication
  *
  * @author David
  */
@@ -21,7 +21,7 @@ public class UserRealm extends AuthorizingRealm {
     private UserService userService;
 
     /**
-     * 授权 每次点击都会进行验证
+     *Authorize each click to verify
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -32,7 +32,7 @@ public class UserRealm extends AuthorizingRealm {
     }
 
     /**
-     * 登录认证 登录时验证
+     * Log in to authenticate when you log on
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(
@@ -40,15 +40,15 @@ public class UserRealm extends AuthorizingRealm {
         String username = (String) token.getPrincipal();
         User user = userService.getUserByUserName(username);
         if (user == null) {
-            throw new UnknownAccountException();// 没找到帐号
+            throw new UnknownAccountException();// Did not find the account
         }
         if (Boolean.TRUE.equals(user.getLocked())) {
-            throw new LockedAccountException(); // 帐号锁定
+            throw new LockedAccountException(); // Account lock
         }
-        // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配
+        // To AuthenticatingRealm using CredentialsMatcher for password matching
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.getUsername(), // 用户名
-                user.getPassword(), // 密码
+                user.getUsername(), // username
+                user.getPassword(), // password
                 ByteSource.Util.bytes(user.getCredentialsSalt()),// salt=username+salt
                 getName() // realm name
         );

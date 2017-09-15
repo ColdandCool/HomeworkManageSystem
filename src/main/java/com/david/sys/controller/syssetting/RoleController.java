@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * 权限控制器
+     * Authority controller
  *
  * @author David
  */
@@ -56,7 +56,7 @@ public class RoleController extends BaseController {
     }
 
     /**
-     * 加载列表页
+     * Load the list page
      *
      * @param role
      * @param model
@@ -73,7 +73,7 @@ public class RoleController extends BaseController {
     }
 
     /**
-     * 打开新增或编辑页
+     * Open the new or edit page
      *
      * @param role
      * @param model
@@ -83,7 +83,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Role role, Model model) {
         User user = UserUtils.getLoginUser();
-        //资源列表
+        //Resource list
         if (user.isAdmin()) {
             model.addAttribute("resourceList", resourceService.findList(null));
         } else {

@@ -45,7 +45,7 @@ public class PasswordHelper {
     }
 
     /**
-     * 获取密码
+     * Get the password
      *
      * @param user
      * @return

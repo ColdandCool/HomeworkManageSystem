@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.Date;
 
 /**
- * 系统标签函数
+ * System tag function
  *
  * @author David
  */
@@ -64,7 +64,7 @@ public class Functions {
 
 
     /**
-     * 判断是否在集合中
+     * To determine whether it is in the collection
      *
      * @param iterable
      * @param element
@@ -78,7 +78,7 @@ public class Functions {
     }
 
     /**
-     * 获取在线用户列表
+     * Get the online user list
      *
      * @return
      */
@@ -88,7 +88,7 @@ public class Functions {
     }
 
     /**
-     * 获取session 账号
+     * Get account account
      *
      * @param session
      * @return
@@ -102,7 +102,7 @@ public class Functions {
     }
 
     /**
-     * 判断是否强制退出
+     * To determine whether to force the withdrawal
      *
      * @param session
      * @return
@@ -112,7 +112,7 @@ public class Functions {
     }
 
     /**
-     * 获取当前登录用户
+     * Get the current login user
      *
      * @return
      */
@@ -121,7 +121,7 @@ public class Functions {
     }
 
     /**
-     * 获取config.properties配置文件
+     * Get the config.properties configuration file
      *
      * @param key
      * @return
@@ -132,7 +132,7 @@ public class Functions {
 
 
     /**
-     * 获取数据配置
+     * Get the data configuration
      *
      * @param sysName
      * @param moduleName
@@ -144,7 +144,7 @@ public class Functions {
     }
 
     /**
-     * 中文乱码解码
+     * Chinese distortion decoding
      *
      * @param key
      * @return
@@ -158,7 +158,7 @@ public class Functions {
     }
 
     /**
-     * 时间格式化
+     * Time formatting
      *
      * @param date
      * @return

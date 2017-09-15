@@ -4,13 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 插件基类
+ * Plug-in base class
+ *
  * @author david.cn
  */
 public abstract class BaseUtils {
 
     /**
-     * 日志对象
+     * logger
      */
     protected static Logger logger = LoggerFactory.getLogger(BaseUtils.class);
 

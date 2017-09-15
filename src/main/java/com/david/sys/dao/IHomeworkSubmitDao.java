@@ -6,7 +6,7 @@ import com.david.sys.entity.HomeworkSubmit;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * Created by liulinlin on 2017/9/9.
+ * Created by David on 2017/9/9.
  */
 @MyBatisDao
 public interface IHomeworkSubmitDao extends ICrudDao<HomeworkSubmit> {

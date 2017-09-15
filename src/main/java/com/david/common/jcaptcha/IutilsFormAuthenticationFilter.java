@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 验证码失效是不进行身份验证
+ * Verification code is invalid for authentication
  *
  * @author david.cn
  * @version 1.0

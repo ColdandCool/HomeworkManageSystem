@@ -22,7 +22,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-	<!-- 内容区域 -->
+	<!-- Content area -->
 	<div class="tpl-content-wrapper">
 		<div class="row-content am-cf">
 			<div class="row">
@@ -126,15 +126,15 @@
 <script src="${ctxStatic}/custom/js/ztree.select.js"></script>
 <script>
 	$(document).ready(function() {
-		//消息提醒
+		//message notification
 		var msg = '${msg}';
 		if(msg!=''){
 			showMsg(msg);
 			if(msg=="Success"){
-				closeModel(true);//关闭窗口
+				closeModel(true);//close the window
 			}
 		}
-		initSelectValue(true);//初始化下拉框的值
+		initSelectValue(true);//Initialize the value of the drop-down box
 	});
 </script>
 

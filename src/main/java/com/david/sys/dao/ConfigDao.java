@@ -13,7 +13,7 @@ import com.david.sys.entity.Config;
 public interface ConfigDao extends ICrudDao<Config> {
 
     /**
-     * 获取配置信息
+     * Get configuration information
      * @param config
      * @return
      */

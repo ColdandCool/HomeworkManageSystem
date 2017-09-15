@@ -1,7 +1,7 @@
 package com.david.sys.entity.enums;
 
 /**
- * 资源类型
+ * Resource Type
  * @author David
  */
 public enum ResourceEnum {

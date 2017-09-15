@@ -1216,7 +1216,7 @@ _e(function (E, $) {
         // 计算 tip 宽度
         var $tempDiv;
         if (!self.tipWidth) {
-            // 设置一个纯透明的 p（absolute;top:-10000px;不会显示在内容区域）
+            // 设置一个纯透明的 p（absolute;top:-10000px;不会显示在Content area）
             // 内容赋值为 title ，为了计算tip宽度
             $tempDiv = $('<p style="opacity:0; filter:Alpha(opacity=0); position:absolute;top:-10000px;">' + title + '</p>');
             // 先添加到body，计算完再 remove

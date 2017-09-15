@@ -14,7 +14,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 内容区域 -->
+    <!-- Content area -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
             <div class="row">
@@ -81,7 +81,7 @@
                                                         class="am-icon-check"></span></a>
                                             </td>
                                             <td class="am-form-group am-form-file">
-                                                <i class="am-icon-cloud-upload"></i> 选择要上传的作业
+                                                <i class="am-icon-cloud-upload"></i> submit homework
                                                 <input type="file" id="uploadfile" accept=".doc,.docx" onchange="saveFile(${item.id})">
                                             </td>
                                         </tr>
@@ -112,7 +112,7 @@
         }
     });
 
-    //保存图像到后台
+    //Save the image to the background
     function saveFile(homeworkid) {
         var formData = new FormData();
         var name = $('#uploadfile').val();

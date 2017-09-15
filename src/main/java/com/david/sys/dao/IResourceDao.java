@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 资源Dao接口
+ * Resource Dao interface
  * 
  * @author David
  */
@@ -17,7 +17,7 @@ import java.util.Set;
 public interface IResourceDao extends ICrudDao<Resource> {
 
 	/**
-	 * 获取资源排序值
+	 * Get the resource sort value
 	 * 
 	 * @param id
 	 * @return
@@ -25,14 +25,14 @@ public interface IResourceDao extends ICrudDao<Resource> {
 	public int getResourceSort(@Param("id") String id);
 
 	/**
-	 * 获取权限标识
+	 * Get the permission ID
 	 * @param resourceIds
 	 * @return
 	 */
 	public List<Resource> getResources(@Param("resourceIds") Set<String> resourceIds);
 
 	/**
-	 * 查询是否存在子节点
+	 * Query whether there are child nodes
 	 * @param resource
 	 * @return
 	 */

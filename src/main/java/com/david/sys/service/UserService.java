@@ -79,7 +79,7 @@ public class UserService extends CrudService<IUserDao, User> {
     /**
      * Gets the collection of role objects for the specified user
      *
-     * @param userId 用户名
+     * @param userId
      * @return
      */
     public List<Role> findRolesOfUser(String userId) {

@@ -19,7 +19,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
     private Cache<String, AtomicInteger> passwordRetryCache;
 
     /**
-     * 初始化密码缓存
+     * Initialize the password cache
      * @param cacheManager
      */
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
@@ -29,20 +29,20 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         String username = (String)token.getPrincipal();
-        //错误次数累加 10分钟后清除
+        //The number of errors accumulated after 10 minutes to clear
         AtomicInteger retryCount = passwordRetryCache.get(username);
         if(retryCount == null) {
             retryCount = new AtomicInteger(0);
             passwordRetryCache.put(username, retryCount);
         }
         if(retryCount.incrementAndGet() > 5) {
-            //规定时间内超出错误次数
+            //The number of times exceeded in the specified time
             throw new ExcessiveAttemptsException();
         }
 
         boolean matches = super.doCredentialsMatch(token, info);
         if(matches) {
-            //匹配正确后，清除错误计数器
+            //When the match is correct, clear the error counter
             passwordRetryCache.remove(username);
         }
         return matches;

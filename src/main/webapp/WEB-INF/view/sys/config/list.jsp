@@ -12,7 +12,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 内容区域 -->
+    <!-- Content area -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
             <div class="row">

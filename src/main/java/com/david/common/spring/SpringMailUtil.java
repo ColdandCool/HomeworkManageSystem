@@ -16,8 +16,8 @@ public class SpringMailUtil {
     static {
         senderImpl.setHost(JConfig.getConfig("mail.smtp"));
         senderImpl.setPort(465);
-        senderImpl.setUsername(JConfig.getConfig("mail.username")); // 根据自己的情况,设置username
-        senderImpl.setPassword(JConfig.getConfig("mail.password")); // 根据自己的情况, 设置password
+        senderImpl.setUsername(JConfig.getConfig("mail.username"));
+        senderImpl.setPassword(JConfig.getConfig("mail.password"));
         Properties properties = new Properties();
         properties.setProperty("mail.transport.protocol", "smtp");
         properties.setProperty("mail.smtp.auth", "true");
@@ -29,7 +29,7 @@ public class SpringMailUtil {
     }
 
     public static void sendTextMail(String email, String Subject, String text) {
-        // 建立邮件消息
+        // Create a mail message
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(email);
         mailMessage.setSubject(Subject);

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 /**
- * 资源控制器
+ * Resource controller
  *
  * @author David
  */
@@ -52,7 +52,7 @@ public class ResourceController extends BaseController {
     }
 
     /**
-     * 列表页
+     * List
      *
      * @param model
      * @return
@@ -74,7 +74,7 @@ public class ResourceController extends BaseController {
     }
 
     /**
-     * 跳转到新增页
+     * Jump to new page
      *
      * @param resource
      * @param model
@@ -90,7 +90,7 @@ public class ResourceController extends BaseController {
     }
 
     /**
-     * 跳转到修改页
+     * Go to the Edit page
      *
      * @param resource
      * @param model
@@ -104,7 +104,7 @@ public class ResourceController extends BaseController {
     }
 
     /**
-     * 修改
+     * modify
      *
      * @param resource
      * @param redirectAttributes
@@ -119,7 +119,7 @@ public class ResourceController extends BaseController {
     }
 
     /**
-     * 删除
+     * remove
      *
      * @param resource
      * @param redirectAttributes
@@ -129,7 +129,7 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(Resource resource, int pageNo, int pageSize, RedirectAttributes redirectAttributes) {
         if (!"1".equals(resource.getId())) {
-            //删除前判断是否存在下级节点
+            //Before deciding whether there is a lower node
             int count = resourceService.findNext(resource);
             if (count > 0) {
                 addMessage(redirectAttributes, "Fail.If there are subnodes, delete the child nodes first");

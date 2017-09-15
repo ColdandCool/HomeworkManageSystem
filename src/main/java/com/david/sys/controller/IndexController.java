@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 首页控制器
+ * Home controller
  *
  * @author David
  */

@@ -112,7 +112,7 @@
         </ul>
     </div>
 
-    <!-- 内容区域 -->
+    <!-- Content area -->
     <div class="tpl-content-wrapper">
         <iframe name="main-content" id="main-content" src="${ctx}/welcome" style="width:100%;" scrolling="no"
                 frameborder="no"></iframe>
@@ -121,7 +121,7 @@
 </div>
 <%@ include file="include/bottom.jsp" %>
 <script src="${ctxStatic}/3rd-lib/tpl/tpl.js"></script>
-<!-- 定义模板 -->
+<!-- Define the template -->
 <script type="text/template" id="mailTpl" desc="邮件列表">
     <# for(var i=0; i<list.length; i++) {var item=list[i];#>
     <li class="tpl-dropdown-menu-messages">
@@ -180,7 +180,7 @@
 </script>
 <script>
     $(document).ready(function () {
-        //初始化地址
+        //Initialize the address
         var initPage = function () {
             var link = location.hash;
             if (link) {
@@ -196,9 +196,9 @@
             }
         }
         initPage();
-        //点击左侧菜单
+        //Click on the left menu
         $(".sidebar-nav").on('click', '.menu-link', function () {
-            //清除菜单选中状态
+            //Clear the menu selection status
             $(".menu-link-clear").removeClass("active").removeClass("sub-active");
             var $menu = $(this);
             var level = $menu.attr("level");
@@ -211,7 +211,7 @@
             $("#main-content").attr("src", $menu.attr("href").substr(1));
         });
 
-        //所有的功能菜单
+        //All function menus
         var menus = [
             <c:forEach items="${menus}" var="menu" varStatus="status">
                 <c:if test="${not empty menu.url}">{
@@ -221,11 +221,11 @@
             </c:forEach>
         ];
 
-        //功能搜索事件绑定
+        //Function search event binding
         $(document).delegate(".am-select-ui-input", "blur focus keyup", function (event) {
             var eType = event.type;
             switch (eType) {
-                case 'focusin'://获取焦点
+                case 'focusin':
                     var currentProposals = [];
                     var proposalList = $(this).parent().find(".am-select-ui");
                     var word = $(this).val();
@@ -247,7 +247,7 @@
                         $this.parent().find(".am-select-ui").hide(100);
                     }, 100);
                     break;
-                case 'keyup'://键盘按下
+                case 'keyup':
                     var currentProposals = [];
                     var v = event.which;
                     if (v == 38 || v == 40 || v == 13) {
@@ -269,7 +269,7 @@
             }
         });
 
-        //邮件通知数据
+        //Mail notification data
         get("${ctx}/sys/msg/getMailPage?msgSend.type=mail&status=0&pageSize=2", function (data) {
             if (data.ret == 1) {
                 if (data.data.list) {
@@ -300,7 +300,7 @@
         });
     });
 
-    //跳转
+    //
     function link(url) {
         $(".menu-link-clear").removeClass("active").removeClass("sub-active");
         $("#main-content").attr("src", url);

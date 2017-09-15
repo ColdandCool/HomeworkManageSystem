@@ -9,23 +9,23 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * 系统信息获取工具 LLL 后期可以删除不再使用  需要将
+ * System information acquisition tool LLL 后期可以删除不再使用  需要将
  * @author david.cn
  */
 public class SystemUtils extends BaseUtils{
 
     /**
-     * 系统基本信息
+     * System basic information
      */
     private static Properties props = System.getProperties();
 
     /**
-     * 运行时参数
+     * Runtime parameters
      */
     private static Runtime runtime = Runtime.getRuntime();
 
     /**
-     * 获取系统基本信息
+     * Get the system basic information
      * @return
      */
     public static Map<String,Object> getSystemInfo(){
@@ -57,14 +57,14 @@ public class SystemUtils extends BaseUtils{
     }
 
     /**
-     * 获取物理内存使用率
+     * Get physical memory usage
      * @return
      */
     private static int getMemery(){
         OperatingSystemMXBean osmxb = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
-        // 总的物理内存+虚拟内存
+        // Total physical memory + virtual memory
         long totalvirtualMemory = osmxb.getTotalSwapSpaceSize();
-        // 剩余的物理内存
+        // Remaining physical memory
         long freePhysicalMemorySize = osmxb.getFreePhysicalMemorySize();
         Double compare=(Double)(1-freePhysicalMemorySize*1.0/totalvirtualMemory)*100;
         return Math.abs(compare.intValue());

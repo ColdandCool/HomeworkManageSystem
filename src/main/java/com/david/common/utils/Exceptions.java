@@ -8,14 +8,14 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * 关于异常的工具类.
+ * On the exception of the tool class.
  * @author calvin
  * @version 2013-01-15
  */
 public class Exceptions {
 
 	/**
-	 * 将CheckedException转换为UncheckedException.
+	 * Converts CheckedException to UncheckedException.
 	 */
 	public static RuntimeException unchecked(Exception e) {
 		if (e instanceof RuntimeException) {
@@ -26,7 +26,7 @@ public class Exceptions {
 	}
 
 	/**
-	 * 将ErrorStack转化为String.
+	 *Convert ErrorStack to String.
 	 */
 	public static String getStackTraceAsString(Throwable e) {
 		if (e == null){
@@ -38,7 +38,7 @@ public class Exceptions {
 	}
 
 	/**
-	 * 判断异常是否由某些底层的异常引起.
+	 * Determine whether the exception is caused by some of the underlying anomalies.
 	 */
 	public static boolean isCausedBy(Exception ex, Class<? extends Exception>... causeExceptionClasses) {
 		Throwable cause = ex.getCause();
@@ -54,7 +54,7 @@ public class Exceptions {
 	}
 
 	/**
-	 * 在request中获取异常类
+	 * Get the exception class in request
 	 * @param request
 	 * @return 
 	 */

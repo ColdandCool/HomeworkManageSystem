@@ -3,7 +3,7 @@ package com.david.sys.entity;
 import com.david.sys.entity.enums.ResourceEnum;
 
 /**
- * 资源表
+ * Resource table
  * 
  * @author David
  */
@@ -11,16 +11,16 @@ public class Resource extends DataEntity<Resource> {
 
 	private static final long serialVersionUID = 1L;
 
-	private String name; // 资源名称
-	private ResourceEnum type = ResourceEnum.menu; // 资源类型
-	private String icon;//图标
-	private String url; // 资源路径
-	private String permission; // 权限字符串
-	private String parentId; // 父编号
-	private Resource resource;//上级资源
-	private String parentIds; // 父编号列表
-	private int sort=0;// 排序
-	private Boolean available = Boolean.TRUE;//是否可用
+	private String name; // name
+	private ResourceEnum type = ResourceEnum.menu; // type
+	private String icon;//icon
+	private String url; // url
+	private String permission; // permission
+	private String parentId; // parentId
+	private Resource resource;//Superior resources
+	private String parentIds; // Superior id
+	private int sort=0;// sort
+	private Boolean available = Boolean.TRUE;//it's usable or not
 
 	public Resource() {
 		super();

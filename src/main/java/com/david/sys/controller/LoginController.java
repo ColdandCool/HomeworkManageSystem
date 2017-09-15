@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 登录控制器
+ * Log in to the controller
  *
  * @author David
  */
@@ -36,7 +36,7 @@ public class LoginController extends BaseController {
     private PasswordHelper passwordHelper;
 
     /**
-     * 获取异步登录界面
+     * Get the asynchronous login screen
      *
      * @param response
      * @return
@@ -44,7 +44,7 @@ public class LoginController extends BaseController {
     @RequestMapping("/ajaxLogin")
     public String ajaxLogin(HttpServletResponse response) {
         ResultVo resultVo = null;
-        //获取用户登录信息 验证已登录，返回登录信息
+        //Get user login information Verify login, return login information
         String userName = UserUtils.getLoginUserName();
         if (userName != null) {
             resultVo = new ResultVo(ResultVo.SUCCESS, "1", "login successful", null);
@@ -55,7 +55,7 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * 登录处理
+     * Login processing
      *
      * @param request
      * @param response
@@ -64,12 +64,12 @@ public class LoginController extends BaseController {
      */
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
-        //ajax登录失败处理
+        //ajax login failed handling
         if ("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))) {
             ResultVo resultVo = new ResultVo(ResultVo.FAILURE, "0", "Login failed", null);
             return renderString(response, resultVo);
         }
-        //获取用户登录信息 验证已登录，跳转到管理页
+        //Get User Login Information Verify that you are logged in and go to the Administration page
         String userName = UserUtils.getLoginUserName();
         if (userName != null) {
             return "redirect:" + adminPath;
@@ -104,17 +104,17 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * 用户注册
+     * User registration
      *
-     * @param username 用户名
-     * @param password 密码
-     * @param password 确认密码
+     * @param username username
+     * @param password password
+     * @param rpassword password confirm
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(String username, String email, String password, String rpassword, Model model) {
         String url = "register";
-        //判断是否密码重复
+        //To determine whether the password is repeated
         if (!password.equals(rpassword)) {
             addMessage(model, "Two passwords are inconsistent");
         } else {

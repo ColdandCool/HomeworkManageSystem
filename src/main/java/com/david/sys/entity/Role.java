@@ -17,18 +17,18 @@ public class Role extends DataEntity<Role> {
     private static final long serialVersionUID = 1L;
     private String role; // label
     private String name; // name
-    private DataScopeEnum dataScope = DataScopeEnum.self; // 数据范围
-    private List<String> resourceIds; // 拥有的资源
-    private String resourceIdsStr; // 拥有的资源
-    private Boolean available = Boolean.TRUE; // 是否可用
+    private DataScopeEnum dataScope = DataScopeEnum.self; // data range
+    private List<String> resourceIds; // Owned resources
+    private String resourceIdsStr; // Owned resources
+    private Boolean available = Boolean.TRUE; // it's usable or not
 
     public static enum RoleType {
-        /** 管理员 */
-        SECURITY_ROLE("security-role","管理员"),
+        /** administrator */
+        SECURITY_ROLE("security-role","administrator"),
         /** 可进行任务分配 */
-        ASSIGNMENT("assignment", "可进行任务分配"),
+        ASSIGNMENT("assignment", "Can be assigned to the task"),
         /** 普通用户 */
-        USER("user", "普通用户");
+        USER("user", "general user");
         private RoleType(String typeName, String typeDesc) {
             this.typeName = typeName;
             this.typeDesc = typeDesc;

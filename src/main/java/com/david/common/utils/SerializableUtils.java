@@ -9,13 +9,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * 序列化工具
+ * Serialization tool
  * @author david.cn
  */
 public class SerializableUtils {
 
     /**
-     * 序列化
+     * Serialization
      * @param session
      * @return
      */
@@ -31,7 +31,7 @@ public class SerializableUtils {
     }
 
     /**
-     * 反序列化
+     * Deserialization
      * @param sessionStr
      * @return
      */

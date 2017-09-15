@@ -22,7 +22,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 内容区域 -->
+    <!-- Content area -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
             <div class="row">
@@ -101,26 +101,26 @@
 <script src="${ctxStatic}/custom/js/ztree.org.js"></script>
 <script>
     $(function () {
-        //消息提醒
+        //message notification
         var msg = '${msg}';
         if(msg!=''){
             showMsg(msg);
-            closeModel(true);//关闭窗口
+            closeModel(true);//close the window
         }
-        initSelectValue(true);//初始化下拉框的值
-        //资源树选择
+        initSelectValue(true);
+        //Resource tree selection
         var zNodes =[<c:forEach items="${organizationList}" var="o" varStatus="status">{ id:${o.id}, pId:${o.parentId}, name:'${o.name}', open:${o.rootNode}}<c:if test="${!status.last}">,</c:if></c:forEach>];
         $.fn.ztreeSelect($("#tree"),zNodes);
 
-        //权限树选择
+        //Permission tree selection
         var orgZNodes =[<c:forEach items="${resourceList}" var="r" varStatus="status"><c:if test="${not r.rootNode}">{ id:${r.id}, pId:${r.parentId}, name:"${r.name}", checked:${fnc:in(role.resourceIds, r.id)},open:true}<c:if test="${!status.last}">,</c:if></c:if></c:forEach>];
         $.fn.ztreeOrg($("#treeOrg"),orgZNodes);
     });
-    //ztree资源点击回调
+    //ztree resource click callback
     function ztreeOnClickCall(treeNode){
         $("#organizationId").val(treeNode.id);
     }
-    //ztree机构点击回调
+    //ztree institutions click callback
     function ztreeOrgOnClickCall(id){
         $("#resourceIds").val(id);
     }

@@ -14,7 +14,7 @@
 <body>
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 内容区域 -->
+    <!-- Content area -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
             <div class="row">
@@ -63,7 +63,7 @@
                                                 <header class="am-comment-hd">
                                                     <div class="am-comment-meta">
                                                         <a href="#" class="am-comment-author">${item.userName}</a>
-                                                        评论于
+                                                        Commented on
                                                         <time datetime="2013-07-27T04:54:29-07:00"><fmt:formatDate value="${item.time}" pattern="yyyy-MM-dd" />
                                                         </time>
                                                     </div>
@@ -97,7 +97,7 @@
         if (msg != '') {
             showMsg(msg);
             if (msg == "Success") {
-                closeModel(true);//关闭窗口
+                closeModel(true);//close the window
             }
         }
         initSelectValue(true);//初始化下拉框的值

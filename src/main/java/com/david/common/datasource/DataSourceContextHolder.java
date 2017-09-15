@@ -1,7 +1,7 @@
 package com.david.common.datasource;
 
 /**
- * 数据源切换类
+ * Data source switching class
  */
 public class DataSourceContextHolder {
 

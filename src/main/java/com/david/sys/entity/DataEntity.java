@@ -12,9 +12,9 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
     private static final long serialVersionUID = 1L;
 
-    private User user;//当前用户
-    private User createUser;//创建人
-    private User updateUser;//更新人
+    private User user;
+    private User createUser;
+    private User updateUser;
 
     public DataEntity() {
         this.status = STATUS_NORMAL;
@@ -27,7 +27,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
 
     /**
-     * 插入之前执行方法，子类实现
+     * Insert the previous implementation method, subclass implementation
      */
     public void preInsert() {
         User user = UserUtils.getLoginUser();
@@ -40,7 +40,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     }
 
     /**
-     * 更新之前执行方法，子类实现
+     * Insert the previous implementation method, subclass implementation
      */
     public void preUpdate() {
         User user = UserUtils.getLoginUser();

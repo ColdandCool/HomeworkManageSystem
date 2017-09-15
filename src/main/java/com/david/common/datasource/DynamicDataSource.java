@@ -3,7 +3,7 @@ package com.david.common.datasource;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
- * 自定义数据源
+ * Custom data source
  */
 public class DynamicDataSource extends AbstractRoutingDataSource {
 

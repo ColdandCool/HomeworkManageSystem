@@ -3,7 +3,7 @@ package com.david.common.utils;
 import java.util.Date;
 
 /**
- * 时间格式化函数
+ * Time formatting function
  * @author david.cn
  * @version 1.0
  */

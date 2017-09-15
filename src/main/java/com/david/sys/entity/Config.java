@@ -9,10 +9,10 @@ public class Config extends DataEntity<Config> {
 
     private static final long serialVersionUID = 1L;
 
-    private String sysName;//系统名称
-    private String moduleName;//模块名称
-    private String configName;//配置key
-    private String configValue;//配置值
+    private String sysName;//system name
+    private String moduleName;//moduleName
+    private String configName;//key
+    private String configValue;//value
 
     public Config() {
         super();
