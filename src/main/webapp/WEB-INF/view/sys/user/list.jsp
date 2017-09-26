@@ -37,6 +37,8 @@
                                                     onclick="openModel(false,'${ctx}/user/create')">
                                                 <span class="am-icon-plus"></span> ADD
                                             </button>
+                                        </shiro:hasPermission>
+                                        <shiro:hasPermission name="homework:teamuser:add">
                                             <button type="button" class="am-btn am-btn-default am-btn-success"
                                                     onclick="openModel(false,'${ctx}/user/teamuserAddPage?id=${page.entity.id}')">
                                                 <span class="am-icon-plus"></span> ADD
@@ -74,25 +76,29 @@
                                             <td>${user.locked?'<span class="am-badge am-badge-danger am-radius">Yes</span>':'<span class="am-badge am-badge-success am-radius">No</span>'}</td>
                                             <td>
                                                 <shiro:hasPermission name="sys:user:update">
-                                                    <a href="javascript:;" onclick="openModel(false,'${ctx}/user/update?id=${user.id}')"
+                                                    <a href="javascript:;"
+                                                       onclick="openModel(false,'${ctx}/user/update?id=${user.id}')"
                                                        title="Modify"><span class="am-icon-pencil"></span></a>
                                                 </shiro:hasPermission>
                                                 <shiro:hasPermission name="sys:user:delete">
                                                     <c:if test="${user.id!=1 && user.id!=fnc:getLoginUser().id}">
                                                         <a href="${ctx}/user/delete?id=${user.id}&pageNo=${page.pageNo}&pageSize=${page.pageSize}"
                                                            onclick="return confirm('Are you sure you want to delete this data?', this.href)"
-                                                           title="Delete"><span class="am-text-danger am-icon-trash-o"></span></a>
+                                                           title="Delete"><span
+                                                                class="am-text-danger am-icon-trash-o"></span></a>
                                                     </c:if>
                                                 </shiro:hasPermission>
-                                                <a href="javascript:;" onclick="openModel(false,'${ctx}/user/${user.id}/changePassword')"
-                                                   title="ChangePwd"><span class="am-text-success am-icon-key"></span></a>
-                                                <a href="${ctx}/user/teamUserRemove?id=${user.id}"
-                                                   onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
-                                                   title="Delete"><span class="am-icon-times"></span></a>
-
-                                                <a href="${ctx}/user/download?id=${user.id}&homeworkid=${1}"
-                                                   onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
-                                                   title="Delete"><span class="am-icon-times"></span></a>
+                                                <shiro:hasPermission name="sys:user:changepwd">
+                                                    <a href="javascript:;"
+                                                       onclick="openModel(false,'${ctx}/user/${user.id}/changePassword')"
+                                                       title="ChangePwd"><span
+                                                            class="am-text-success am-icon-key"></span></a>
+                                                </shiro:hasPermission>
+                                                <shiro:hasPermission name="homework:teamuser:delete">
+                                                    <a href="${ctx}/user/teamUserRemove?id=${user.id}"
+                                                       onclick="return confirm('Are you sure you want to remove this user from your team?', this.href)"
+                                                       title="Remove"><span class="am-icon-minus"></span></a>
+                                                </shiro:hasPermission>
                                             </td>
                                         </tr>
                                     </c:forEach>

@@ -51,7 +51,7 @@
                                             <td>${user.email}</td>
                                             <td>${user.mobile}</td>
                                             <td>
-                                                <shiro:hasPermission name="sys:user:delete">
+                                                <shiro:hasPermission name="homework:teamuser:delete">
                                                     <a href="${ctx}/user/teamuserAdd?id=${user.id}"
                                                        onclick="return confirm('Are you sure you want to add this user to your team?', this.href)"
                                                        title="ADD"><span class="am-icon-plus"></span></a>

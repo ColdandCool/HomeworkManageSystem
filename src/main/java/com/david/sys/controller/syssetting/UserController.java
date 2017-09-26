@@ -68,7 +68,7 @@ public class UserController extends BaseController {
      * @param page
      * @return
      */
-    @RequiresPermissions("homework:homework:teamadd")
+    @RequiresPermissions("homework:teamuser:view")
     @RequestMapping(value = "/teamuser")
     public String teamuser(Model model, Page<User> page) {
         //LLL 小组管理人员
@@ -141,7 +141,12 @@ public class UserController extends BaseController {
     @RequiresPermissions("sys:user:create")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(User user, RedirectAttributes redirectAttributes) {
+
         passwordHelper.encryptPassword(user);
+        if (user.getRoleIdsStr().equalsIgnoreCase("")){
+            //LLL set default role
+            user.setRoleIdsStr("2,");
+        }
         userService.save(user);
         addMessage(redirectAttributes, "Success");
         return "redirect:" + adminPath + "/user/update?id=" + user.getId();

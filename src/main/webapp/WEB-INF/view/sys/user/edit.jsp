@@ -54,8 +54,8 @@
 									<label class="am-u-sm-3 am-form-label"><span class="error">*</span>IsLeader：</label>
 									<div class="am-u-sm-5">
 										<select name="isDept" data="${user.isDept}">
-											<option value="false">Yes</option>
-											<option value="true">No</option>
+											<option value="true">Yes</option>
+											<option value="false">No</option>
 										</select>
 									</div>
 									<label class="am-u-sm-4"></label>

@@ -35,7 +35,7 @@ public class RoleService extends CrudService<IRoleDao, Role> {
     }
 
     public Set<String> findPermissions(String[] roleIds) {
-        Set<String> resourceIds = new HashSet<String>();
+        Set<String> resourceIds = new HashSet<>();
         List<Role> roles = dao.getRoles(roleIds);
         for (int i = 0; i < roles.size(); i++) {
             Role role = roles.get(i);

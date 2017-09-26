@@ -9,11 +9,13 @@
 </head>
 <body>
 <!--[if lte IE 9]>
-<p class="browsehappy">You are using <strong>outdated </strong>browsers, the platform is not supported. Please upgrade your browser for a better experience.You are using outdated browsers, the platform is not supported. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser </a>for a better experience！</p>
+<p class="browsehappy">You are using <strong>outdated </strong>browsers, the platform is not supported. Please upgrade
+    your browser for a better experience.You are using outdated browsers, the platform is not supported. Please <a
+            href="http://browsehappy.com/" target="_blank">upgrade your browser </a>for a better experience！</p>
 <![endif]-->
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- head -->
+    <!-- head  -->
     <header>
         <!-- logo -->
         <div class="am-fl tpl-header-logo">
@@ -24,10 +26,29 @@
                     <span>
                 </span>
             </div>
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <!-- weather -->
+                    <li class="am-text-sm">
+                       <a>Weather in Sydney, AU,<span>${empty weather?weather.temp:weather.temp}</span>℃</a>
+                    </li>
+                    <!-- welcome -->
+                    <li class="am-text-sm tpl-header-navbar-welcome">
+                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Hello,
+                            <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
+                    </li>
+                    <!-- logout -->
+                    <li class="am-text-sm">
+                        <a href="${ctx}/logout" onclick="return confirm('Are you sure you want to exit?', this.href)">
+                            <span class="am-icon-sign-out"></span> Layou Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 
-    <!-- left-sidebar -->
+    <!-- sidebar -->
     <div class="left-sidebar">
         <!-- user info  -->
         <div class="tpl-sidebar-user-panel">
@@ -100,7 +121,8 @@
 <script src="${ctxStatic}/3rd-lib/tpl/tpl.js"></script>
 <!-- Define the template -->
 <script type="text/template" id="mailTpl" desc="邮件列表">
-    <# for(var i=0; i<list.length; i++) {var item=list[i];#>
+    <# for(var i=0; i
+    <list.length; i++) {var item=list[i];#>
     <li class="tpl-dropdown-menu-messages">
         <a href="javascript:;"
            onclick="document.getElementById('main-content').contentWindow.openModel(false,'${ctx}/sys/msgReceive/update?id=<#=item.id #>');$('#mail').dropdown('close');"
@@ -132,7 +154,8 @@
         </li>
 </script>
 <script type="text/template" id="noticeTpl" desc="通知列表">
-    <# for(var i=0; i<list.length; i++) {var item=list[i];#>
+    <# for(var i=0; i
+    <list.length; i++) {var item=list[i];#>
     <li class="tpl-dropdown-menu-notifications">
         <a href="javascript:;"
            onclick="document.getElementById('main-content').contentWindow.openModel(false,'${ctx}/sys/msgReceive/update?id=<#=item.id #>');$('#notice').dropdown('close');"
@@ -212,13 +235,13 @@
                         if (items[test].name.match(word)) {
                             currentProposals.push(items[test].name);
                             var element = $('<li></li>')
-                                    .html('<a href="#' + items[test].url + '" onclick="link(\'' + items[test].url + '\')">' + items[test].name + '</a>');
+                                .html('<a href="#' + items[test].url + '" onclick="link(\'' + items[test].url + '\')">' + items[test].name + '</a>');
                             proposalList.append(element);
                         }
                     }
                     $(this).parent().find(".am-select-ui").show();
                     break;
-                case 'focusout':
+                case 'focusout'://失去焦点
                     var $this = $(this);
                     setTimeout(function () {
                         $this.parent().find(".am-select-ui").hide(100);
@@ -238,41 +261,11 @@
                         if (items[test].name.match(word)) {
                             currentProposals.push(items[test].name);
                             var element = $('<li></li>')
-                                    .html('<a href="#' + items[test].url + '" onclick="link(\'' + items[test].url + '\')">' + items[test].name + '</a>');
+                                .html('<a href="#' + items[test].url + '" onclick="link(\'' + items[test].url + '\')">' + items[test].name + '</a>');
                             proposalList.append(element);
                         }
                     }
                     break;
-            }
-        });
-
-        //Mail notification data
-        get("${ctx}/sys/msg/getMailPage?msgSend.type=mail&status=0&pageSize=2", function (data) {
-            if (data.ret == 1) {
-                if (data.data.list) {
-                    $("#mailHtml").html(tpl('#mailTpl', data.data));
-                }
-                var $mailBadge = $("#mailBadge");
-                if (data.data.total > 0) {
-                    $mailBadge.html(data.data.total);
-                    $mailBadge.show();
-                } else {
-                    $mailBadge.hide();
-                }
-            }
-        });
-        get("${ctx}/sys/msg/getNoticePage?msgSend.type=notice&status=0&pageSize=3", function (data) {
-            if (data.ret == 1) {
-                if (data.data.list) {
-                    $("#noticeHtml").html(tpl('#noticeTpl', data.data));
-                }
-                var $noticeBadge = $("#noticeBadge");
-                if (data.data.total > 0) {
-                    $noticeBadge.html(data.data.total);
-                    $noticeBadge.show();
-                } else {
-                    $noticeBadge.hide();
-                }
             }
         });
     });

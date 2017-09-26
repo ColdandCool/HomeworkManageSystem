@@ -27,10 +27,12 @@
                             <div class="am-u-sm-12 am-u-md-3 am-u-lg-3">
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button type="button" class="am-btn am-btn-default am-btn-success"
-                                                onclick="openModel(false,'${ctx}/homework/create')"><span
-                                                class="am-icon-plus"></span> ADD
-                                        </button>
+                                        <shiro:hasPermission name="homework:homework:add">
+                                            <button type="button" class="am-btn am-btn-default am-btn-success"
+                                                    onclick="openModel(false,'${ctx}/homework/create')"><span
+                                                    class="am-icon-plus"></span> ADD
+                                            </button>
+                                        </shiro:hasPermission>
                                     </div>
                                 </div>
                             </div>
@@ -67,22 +69,31 @@
                                             </td>
                                             <td>${item.hasUpload}</td>
                                             <td>
-                                                <a href="javascript:;"
-                                                   onclick="openModel(false,'${ctx}/homework/update?id=${item.id}')"
-                                                   title="Modify"><span class="am-icon-pencil"></span></a>
-                                                <a href="${ctx}/homework/${item.id}/delete?pageNo=${page.pageNo}&pageSize=${page.pageSize}"
-                                                   onclick="return confirm('Are you sure you want to delete the data?', this.href)"
-                                                   title="Delete"><span
-                                                        class="am-text-danger am-icon-trash-o"></span></a>
-                                                <a href="javascript:;"
-                                                   onclick="openModel(false,'${ctx}/homework/detail?id=${item.id}')"
-                                                   title="Detail"><span class="am-icon-retweet"></span></a>
-                                                <a href="${ctx}/homework/${item.id}/submitgrade" title="Grade"><span
-                                                        class="am-icon-check"></span></a>
+                                                <shiro:hasPermission name="homework:homework:modify">
+                                                    <a href="javascript:;"
+                                                       onclick="openModel(false,'${ctx}/homework/update?id=${item.id}')"
+                                                       title="Modify"><span class="am-icon-pencil"></span></a>
+                                                </shiro:hasPermission>
+                                                <shiro:hasPermission name="homework:homework:delete">
+                                                    <a href="${ctx}/homework/${item.id}/delete?pageNo=${page.pageNo}&pageSize=${page.pageSize}"
+                                                       onclick="return confirm('Are you sure you want to delete the data?', this.href)"
+                                                       title="Delete"><span
+                                                            class="am-text-danger am-icon-trash-o"></span></a>
+                                                </shiro:hasPermission>
+                                                <shiro:hasPermission name="homework:homework:detail">
+                                                    <a href="javascript:;"
+                                                       onclick="openModel(false,'${ctx}/homework/detail?id=${item.id}')"
+                                                       title="Detail"><span class="am-icon-info"></span></a>
+                                                </shiro:hasPermission>
+                                                <shiro:hasPermission name="homework:homework:grade">
+                                                    <a href="${ctx}/homework/${item.id}/submitgrade" title="Grade"><span
+                                                            class="am-icon-check"></span></a>
+                                                </shiro:hasPermission>
                                             </td>
                                             <td class="am-form-group am-form-file">
                                                 <i class="am-icon-cloud-upload"></i> submit homework
-                                                <input type="file" id="uploadfile" accept=".doc,.docx" onchange="saveFile(${item.id})">
+                                                <input type="file" id="uploadfile" accept=".doc,.docx"
+                                                       onchange="saveFile(${item.id})">
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -117,9 +128,9 @@
         var formData = new FormData();
         var name = $('#uploadfile').val();
         formData.append('file', $('#uploadfile')[0].files[0]);
-        formData.append("name",name);
+        formData.append("name", name);
         $.ajax({
-            url: '${ctx}/homework/submithomework/'+homeworkid,
+            url: '${ctx}/homework/submithomework/' + homeworkid,
             type: 'POST',
             cache: false,
             data: formData,

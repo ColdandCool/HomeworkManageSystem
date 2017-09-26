@@ -56,7 +56,7 @@ public class HomworkController extends BaseController {
         return entity;
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:view")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Homework homework, Model model, Page<Homework> page) {
         page.setEntity(homework);
@@ -64,21 +64,21 @@ public class HomworkController extends BaseController {
         return "sys/homework/list";
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:add")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Homework homework, Model model) {
         model.addAttribute("homework", homework);
         return "sys/homework/edit";
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:modify")
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String modify(Homework homework, Model model) {
         model.addAttribute("homework", homework);
         return "sys/homework/edit";
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:modify")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Homework homework, RedirectAttributes redirectAttributes) {
         //LLL 后期需要更改
@@ -89,7 +89,7 @@ public class HomworkController extends BaseController {
         return "redirect:" + adminPath + "/homework/update?id=" + homework.getId();
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:delete")
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable("id") String id, int pageNo, int pageSize, RedirectAttributes redirectAttributes) {
         Homework homework = homworkService.get(id);
@@ -99,7 +99,7 @@ public class HomworkController extends BaseController {
         return "redirect:" + adminPath + "/homework/list?pageNo=" + pageNo + "&pageSize=" + pageSize;
     }
 
-    @RequiresPermissions("homework:homework")
+    @RequiresPermissions("homework:homework:detail")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detail(Homework homework, Model model) {
         HomeworkComment homeworkComment = new HomeworkComment();
@@ -111,7 +111,6 @@ public class HomworkController extends BaseController {
         return "sys/homework/detail";
     }
 
-    @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/submit", method = RequestMethod.GET)
     public String submit(Homework homework, Model model) {
         // LLL Go to the upload page
@@ -119,7 +118,6 @@ public class HomworkController extends BaseController {
         return "sys/homework/submit";
     }
 
-    @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/submitgrade", method = RequestMethod.GET)
     public String submitgrade(Homework homework, Model model) {
         // LLL Go to the page where the score is processed
@@ -127,7 +125,6 @@ public class HomworkController extends BaseController {
         return "sys/homework/submit";
     }
 
-    @RequiresPermissions("homework:homework")
     @RequestMapping(value = "/addComment/{id}", method = RequestMethod.POST)
     public String addComment(HttpServletResponse response, @PathVariable("id") String id, String comment) {
         HomeworkComment commentObj = new HomeworkComment();
@@ -152,7 +149,7 @@ public class HomworkController extends BaseController {
      * @param model
      * @return
      */
-    @RequiresPermissions("sys:user:update")
+    @RequiresPermissions("homework:homework:grade")
     @RequestMapping(value = "/{id}/submitgrade", method = RequestMethod.GET)
     public String toGradePage(@PathVariable("id") String homeworkid, Model model) {
         HomeworkSubmit submit = homeworkSubmitService.get(homeworkid);
@@ -160,7 +157,7 @@ public class HomworkController extends BaseController {
         return "sys/homework/usergrade";
     }
 
-    @RequiresPermissions("sys:user:update")
+    @RequiresPermissions("homework:homework:grade")
     @RequestMapping(value = "/setGrade/{id}/{grade}", method = RequestMethod.GET)
     public String submitGrade(@PathVariable("id") String homeworkid, @PathVariable("grade") Integer grade) {
         HomeworkSubmit submit = homeworkSubmitService.get(homeworkid);
@@ -169,7 +166,7 @@ public class HomworkController extends BaseController {
         return "redirect:" + adminPath + "/homework/" + submit.getHomeworkId() + "/submitgrade";
     }
 
-    @RequiresPermissions("sys:user:update")
+    @RequiresPermissions("homework:homework:download")
     @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
     public void submitGrade(@PathVariable("id") String id, HttpServletResponse response) {
         HomeworkSubmit submit = homeworkSubmitService.get(id);
@@ -196,6 +193,7 @@ public class HomworkController extends BaseController {
     }
 
     @ResponseBody
+    @RequiresPermissions("homework:homework:upload")
     @RequestMapping(value = "/submithomework/{id}", method = RequestMethod.POST)
     public String submithomwork(@RequestParam("file") MultipartFile file, @PathVariable("id") String homeworkid, HttpServletRequest request) {
         // Get the local storage path
