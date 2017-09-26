@@ -48,11 +48,8 @@
                                             <td>${item.fileName}</td>
                                             <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd"/></td>
                                             <td>
-                                                <shiro:hasPermission name="sys:user:delete">
-                                                    <a href="#"
-                                                       onclick="promptData('${ctx}/homework/setGrade/${item.id}')"
-                                                       title="Grade"><span class="am-icon-check"></span></a>
-                                                </shiro:hasPermission>
+                                                <a href="#" onclick="promptData('${ctx}/homework/setGrade/${item.id}')"
+                                                   title="Grade"><span class="am-icon-check"></span></a>
                                                 <a href="${ctx}/homework/download/${item.id}" title="download"><span
                                                         class="am-icon-download"></span></a>
                                             </td>

@@ -100,7 +100,6 @@
                 closeModel(true);//close the window
             }
         }
-        initSelectValue(true);
     });
 
     function submitComment() {
@@ -108,7 +107,10 @@
         var content = $("#comment").val()
         $("#comment").val("")
         post(url,{"comment":content},function (data) {
-            alert(data)
+            if (data != '') {
+                showMsg(data);
+                closeModel(true);//close the window
+            }
         })
     }
 </script>
