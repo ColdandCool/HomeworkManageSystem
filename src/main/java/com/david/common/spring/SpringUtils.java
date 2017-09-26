@@ -23,7 +23,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor {
      * Get the object
      *
      * @param name
-     * @return Object 一个以所给名字注册的bean的实例
+     * @return Object
      * @throws BeansException
      */
     @SuppressWarnings("unchecked")

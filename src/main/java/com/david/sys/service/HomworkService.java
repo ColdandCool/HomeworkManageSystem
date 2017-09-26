@@ -30,7 +30,7 @@ public class HomworkService extends CrudService<IHomeworkDao, Homework> {
         String userid = UserUtils.getLoginUser().getId();
 
         for (Homework homework : result) {
-            //LLL 查看是否已经提交过作业
+            //LLL  confirm is or not update homework
             int count = dao.hasUpload(homework.getId(), userid);
             if (count != 0) {
                 homework.setHasUpload("Yes");

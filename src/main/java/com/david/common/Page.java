@@ -13,37 +13,37 @@ import java.util.regex.Pattern;
  */
 public class Page<T> {
 
-    private int pageNo = 0; // 当前页码
-    private int pageSize = Integer.valueOf(JConfig.getConfig("page.pageSize")); // 页面大小
-    private int pageNumber = 1;// 页数
-    private int total = 0; // 总数
+    private int pageNo = 0;
+    private int pageSize = Integer.valueOf(JConfig.getConfig("page.pageSize"));
+    private int pageNumber = 1;
+    private int total = 0;
 
-    private int first;// 首页索引
-    private int last;// 尾页索引
-    private int prev;// 上一页索引
-    private int next;// 下一页索引
+    private int first;
+    private int last;
+    private int prev;
+    private int next;
 
-    private boolean hasFirstPage;// 是否是第一页
-    private boolean hasLastPage;// 是否是最后一页
+    private boolean hasFirstPage;
+    private boolean hasLastPage;
 
     private List<T> list = Lists.newArrayList();
     private T entity;
 
-    private String orderBy = "a.id desc"; // 排序字段
-    private String key = "";// 查询关键字
+    private String orderBy = "a.id desc";
+    private String key = "";
 
     /**
-     * 空构造方法
+     * init method
      */
     public Page() {
         initialize();
     }
 
     /**
-     * 构造方法
+     * init method
      *
-     * @param pageNo   当前页码
-     * @param pageSize 分页大小
+     * @param pageNo   pageNo
+     * @param pageSize pageSize
      */
     public Page(int pageNo, int pageSize) {
         this.pageNo = pageNo;
@@ -52,12 +52,12 @@ public class Page<T> {
     }
 
     /**
-     * 构造方法
+     * init method
      *
-     * @param pageNo   当前页码
-     * @param pageSize 分页大小
-     * @param total    总数
-     * @param list     列表
+     * @param pageNo   pageNo
+     * @param pageSize pageSize
+     * @param total    total
+     * @param list     list
      */
     public Page(int pageNo, int pageSize, int total, List<T> list) {
         this.pageNo = pageNo;
@@ -68,7 +68,7 @@ public class Page<T> {
     }
 
     /**
-     * 初始化参数
+     * init config
      */
     public void initialize() {
         this.first = 0;
@@ -108,11 +108,11 @@ public class Page<T> {
             this.prev = this.first;
         }
 
-        if (this.pageNo < this.first) {// 如果当前页小于首页
+        if (this.pageNo < this.first) {
             this.pageNo = this.first;
         }
 
-        if (this.pageNo > this.last) {// 如果当前页大于尾页
+        if (this.pageNo > this.last) {
             this.pageNo = this.last;
         }
     }
@@ -216,7 +216,7 @@ public class Page<T> {
     }
 
     public String getOrderBy() {
-        // SQL过滤，防止注入
+        // SQL inject
         String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|" + "(\\b(select|update|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
         Pattern sqlPattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
         if (sqlPattern.matcher(orderBy).find()) {

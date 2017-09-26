@@ -1,7 +1,6 @@
 package com.david.sys.controller;
 
 import com.david.common.BaseController;
-import com.david.common.utils.SystemUtils;
 import com.david.sys.entity.Resource;
 import com.david.sys.service.ResourceService;
 import com.david.sys.service.UserService;
@@ -38,8 +37,6 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome(Model model) {
-        //LLL 后期删除
-        model.addAttribute("systemInfo", SystemUtils.getSystemInfo());
         return "welcome";
     }
 

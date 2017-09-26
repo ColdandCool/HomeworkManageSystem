@@ -13,45 +13,23 @@
 <![endif]-->
 <script src="${ctxStatic}/assets/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 头部 -->
+    <!-- head -->
     <header>
         <!-- logo -->
         <div class="am-fl tpl-header-logo">
             <a href="${ctx}"><b>HomeworkManageSystem</b></a>
         </div>
-        <!-- 右侧内容 -->
         <div class="tpl-header-fluid">
-            <!-- 侧边切换 -->
             <div class="am-fl tpl-header-switch-button am-icon-list">
                     <span>
                 </span>
             </div>
-            <!-- 其它功能-->
-            <div class="am-fr tpl-header-navbar">
-                <ul>
-                    <!-- weather -->
-                    <li class="am-text-sm">
-                       <a>Weather in Sydney, AU,<span>${empty weather?weather.temp:weather.temp}</span>℃</a>
-                    </li>
-                    <!-- 欢迎语 -->
-                    <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Hello,
-                            <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
-                    </li>
-                    <!-- 退出 -->
-                    <li class="am-text-sm">
-                        <a href="${ctx}/logout" onclick="return confirm('Are you sure you want to exit?', this.href)">
-                            <span class="am-icon-sign-out"></span> Layou Out
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </header>
 
-    <!-- 侧边导航栏 -->
+    <!-- left-sidebar -->
     <div class="left-sidebar">
-        <!-- 用户信息 -->
+        <!-- user info  -->
         <div class="tpl-sidebar-user-panel">
             <div class="tpl-user-panel-slide-toggleable">
                 <div class="tpl-user-panel-profile-picture">
@@ -67,13 +45,12 @@
             </div>
         </div>
 
-        <!-- 菜单 -->
+        <!-- menu -->
         <ul class="sidebar-nav">
             <li class="sidebar-nav-heading">FunctionMenu</li>
             <c:forEach items="${menus}" var="menu1">
                 <c:if test="${menu1.parentId==1}">
                     <li class="sidebar-nav-link">
-                        <!-- 判断是否有下级 -->
                         <c:set var="isSub" value="0"></c:set>
                         <c:forEach items="${menus}" var="menu2">
                             <c:if test="${menu1.id==menu2.parentId}"><c:set var="isSub" value="1"></c:set></c:if>
@@ -241,7 +218,7 @@
                     }
                     $(this).parent().find(".am-select-ui").show();
                     break;
-                case 'focusout'://失去焦点
+                case 'focusout':
                     var $this = $(this);
                     setTimeout(function () {
                         $this.parent().find(".am-select-ui").hide(100);

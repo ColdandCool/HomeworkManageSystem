@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 基础实体
+ * entity
  * 
  * @author David
  * @param <T>
@@ -18,20 +18,20 @@ public abstract class BaseEntity<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 实体编号（唯一标识）
+	 * no
 	 */
 	protected String id;
 
-	protected String remarks; // 备注
-	protected String createBy; // 创建者
+	protected String remarks;
+	protected String createBy;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	protected Date createDate; // 创建日期
-	protected String updateBy; // 更新者
+	protected Date createDate;
+	protected String updateBy;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	protected Date updateDate; // 更新日期
-	protected String status; // 状态
-	protected String dbType;// 数据类型
-	protected String orderBy;// 排序字段
+	protected Date updateDate;
+	protected String status;
+	protected String dbType;
+	protected String orderBy;
 
 	/**
 	 * 是否是新记录（默认：false），调用setIsNew()设置新记录，使用自定义ID。

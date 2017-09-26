@@ -121,11 +121,9 @@
 		initSelectValue(true);//Initialize the value of the drop-down box
 	});
 	$(document).ready(function() {
-		//触发选择文件
 		$("#btnPicture").click(function(){
 			$("#file").click();
 		});
-		//选择文件后
 		$("#file").change(function(){
 			$.ajaxFileUpload({
 				url: '${ctx}/upload/local',

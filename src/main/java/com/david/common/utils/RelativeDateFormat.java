@@ -14,12 +14,12 @@ public class RelativeDateFormat {
     private static final long ONE_DAY = 86400000L;
     private static final long ONE_WEEK = 604800000L;
 
-    private static final String ONE_SECOND_AGO = "秒前";
-    private static final String ONE_MINUTE_AGO = "分钟前";
-    private static final String ONE_HOUR_AGO = "小时前";
-    private static final String ONE_DAY_AGO = "天前";
-    private static final String ONE_MONTH_AGO = "月前";
-    private static final String ONE_YEAR_AGO = "年前";
+    private static final String ONE_SECOND_AGO = "m front";
+    private static final String ONE_MINUTE_AGO = "minute front";
+    private static final String ONE_HOUR_AGO = "h front";
+    private static final String ONE_DAY_AGO = "day front";
+    private static final String ONE_MONTH_AGO = "month front";
+    private static final String ONE_YEAR_AGO = "year front";
 
     public static String format(Date date) {
         long delta = new Date().getTime() - date.getTime();
@@ -36,7 +36,7 @@ public class RelativeDateFormat {
             return (hours <= 0 ? 1 : hours) + ONE_HOUR_AGO;
         }
         if (delta < 48L * ONE_HOUR) {
-            return "昨天";
+            return "yesterday";
         }
         if (delta < 30L * ONE_DAY) {
             long days = toDays(delta);

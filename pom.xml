@@ -277,7 +277,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 代码编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

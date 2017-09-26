@@ -61,12 +61,11 @@ public class ResourceController extends BaseController {
     @RequestMapping()
     public String list(Resource resource, Model model, Page<Resource> page) {
         Resource resource1 = new Resource();
-        resource1.setType(ResourceEnum.menu);//树型数据，只看菜单
+        resource1.setType(ResourceEnum.menu);
         List<Resource> resourceList = resourceService.findList(resource1);
         model.addAttribute("resourceList", resourceList);
-        //初始化加载第一个
         if (JStringUtils.isBlank(resource.getId()) && resourceList.size() > 0) {
-            resource.setId("1");//默认加载
+            resource.setId("1");
         }
         page.setEntity(resource);
         model.addAttribute("page", page.setList(resourceService.findPage(page)));

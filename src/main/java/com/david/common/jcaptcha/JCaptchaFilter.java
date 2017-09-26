@@ -29,7 +29,6 @@ public class JCaptchaFilter extends OncePerRequestFilter{
         response.setHeader("Pragma", "no-cache");
         response.setContentType("image/jpeg");
 
-//        String id = request.getRequestedSessionId();
         BufferedImage bi = JCaptchaUtils.getImageChallengeForID(request);
         ServletOutputStream out = response.getOutputStream();
 

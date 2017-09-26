@@ -13,7 +13,6 @@
 
   <!-- Encodes -->
   <function>
-    <description>URL编码</description>
     <name>urlEncode</name>
     <function-class>com.david.common.utils.Encodes</function-class>
     <function-signature>java.lang.String urlEncode(java.lang.String)</function-signature>
@@ -43,21 +42,18 @@
   
   <!-- StringUtils -->
   <function>
-    <description>从后边开始截取字符串</description>
     <name>substringAfterLast</name>
     <function-class>org.apache.commons.lang3.StringUtils</function-class>
     <function-signature>java.lang.String substringAfterLast(java.lang.String, java.lang.String)</function-signature>
     <example>${fns:substringAfterLast(str,separator)}</example>  
   </function>
   <function>
-    <description>判断字符串是否以某某开头</description>
     <name>startsWith</name>
     <function-class>org.apache.commons.lang3.StringUtils</function-class>
     <function-signature>boolean startsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
     <example>${fns:startsWith(str,prefix)}</example> 
   </function>
   <function>
-    <description>判断字符串是否以某某结尾</description>
     <name>endsWith</name>
     <function-class>org.apache.commons.lang3.StringUtils</function-class>
     <function-signature>boolean endsWith(java.lang.CharSequence, java.lang.CharSequence)</function-signature>
@@ -65,14 +61,12 @@
   </function>
   <!-- DateUtils -->
   <function>
-    <description>获取当前日期</description>
     <name>getDate</name>
     <function-class>com.david.common.utils.DateUtils</function-class>
     <function-signature>java.lang.String getDate(java.lang.String)</function-signature>
     <example>${fns:getDate(pattern)}</example>  
   </function>
   <function>
-    <description>获取过去的天数</description>
     <name>pastDays</name>
     <function-class>com.david.common.utils.DateUtils</function-class>
     <function-signature>long pastDays(java.util.Date)</function-signature>
@@ -81,7 +75,6 @@
   
   <!-- JsonMapper -->
   <function>
-    <description>对象转换JSON字符串</description>
     <name>toJson</name>
     <function-class>com.david.common.JsonMapper</function-class>
     <function-signature>java.lang.String toJsonString(java.lang.Object)</function-signature>

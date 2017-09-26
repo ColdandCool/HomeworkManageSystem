@@ -72,7 +72,6 @@
 		</if>
 	</select>
 
-	<!-- 获取权限标识 -->
 	<select id="getResources" resultType="com.david.sys.entity.Resource">
 		select id,permission from sys_resource where status='0'and available='1' and id in(
 		<foreach collection="resourceIds" item="item" separator=",">
@@ -95,7 +94,6 @@
 		update sys_resource set status='1' where id=#{id}
 	</delete>
 
-	<!-- 查询是否存在下级节点 -->
 	<select id="findNext" resultType="int">
 		SELECT count(1) FROM sys_resource a
 		WHERE a.parent_id=#{id} and a.status=0

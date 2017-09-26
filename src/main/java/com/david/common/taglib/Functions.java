@@ -33,14 +33,6 @@ public class Functions {
     public static Weather getWeather() {
         final String url = "http://api.openweathermap.org/data/2.5/weather?id=2147714&appid=43aacfb6fa831b24200a39d2d4351449";
         Weather weather = new Weather();
-//        weather = (Weather) CacheUtils.get("weather", "Weather.key");
-//        if (weather != null) {
-//            if (new Date().getTime() - weather.getDt().getTime() < 60 * 1000 * 3) {
-//                return weather;
-//            } else {
-//                CacheUtils.remove("weather", "Weather.key");
-//            }
-//        }
 
         String result = HttpClientUtil.doGet(url);
         try {
@@ -58,7 +50,6 @@ public class Functions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        CacheUtils.put("weather", "Weather.key", weather);
         return weather;
     }
 

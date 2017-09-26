@@ -6,81 +6,81 @@ import java.util.List;
 
 /**
  * DAO支持类实现
- * 
- * @author David
+ *
  * @param <T>
+ * @author David
  */
 public interface ICrudDao<T> extends IBaseDao {
 
-	/**
-	 * 获取单条数据
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public T get(String id);
+    /**
+     * get one data
+     *
+     * @param id
+     * @return
+     */
+    public T get(String id);
 
-	/**
-	 * 获取单条数据
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	public T get(T entity);
+    /**
+     * get one data
+     *
+     * @param entity
+     * @return
+     */
+    public T get(T entity);
 
-	/**
-	 * 查询数据列表
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	public List<T> findList(T entity);
+    /**
+     * get list data
+     *
+     * @param entity
+     * @return
+     */
+    public List<T> findList(T entity);
 
-	/**
-	 * 查询总数
-	 * 
-	 * @return
-	 */
-	public int count(@Param("page") Page<T> page);
+    /**
+     * get total data
+     *
+     * @return
+     */
+    public int count(@Param("page") Page<T> page);
 
-	/**
-	 * 查询分页数据
-	 * 
-	 * @param page
-	 * @return
-	 */
-	public List<T> findPage(@Param("page") Page<T> page);
+    /**
+     * get page data
+     *
+     * @param page
+     * @return
+     */
+    public List<T> findPage(@Param("page") Page<T> page);
 
-	/**
-	 * 插入数据
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	public int insert(T entity);
+    /**
+     * insert data
+     *
+     * @param entity
+     * @return
+     */
+    public int insert(T entity);
 
-	/**
-	 * 更新数据
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	public int update(T entity);
+    /**
+     * update data
+     *
+     * @param entity
+     * @return
+     */
+    public int update(T entity);
 
-	/**
-	 * 删除数据
-	 * 
-	 * @param entity
-	 * @return
-	 */
-	public int delete(T entity);
+    /**
+     * delete data  by ogject
+     *
+     * @param entity
+     * @return
+     */
+    public int delete(T entity);
 
-	/**
-	 * 删除数据
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public int delete(String id);
+    /**
+     * delete data by id
+     *
+     * @param id
+     * @return
+     */
+    public int delete(String id);
 
 }

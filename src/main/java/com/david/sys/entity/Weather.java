@@ -96,4 +96,20 @@ public class Weather {
     public void setSunset(long sunset) {
         this.sunset = new Date(sunset);
     }
+
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "temp=" + temp +
+                ", temp_min=" + temp_min +
+                ", temp_max=" + temp_max +
+                ", humidity=" + humidity +
+                ", pressure=" + pressure +
+                ", speed=" + speed +
+                ", all=" + all +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
+                ", dt=" + dt +
+                '}';
+    }
 }

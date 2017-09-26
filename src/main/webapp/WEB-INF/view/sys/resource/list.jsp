@@ -23,7 +23,7 @@
 						</div>
 						<div class="widget-body widget-body-lg am-fr">
 							<div class="am-scrollable-horizontal">
-								<ul id="tree" class="ztree"></ul><!-- 资源树 -->
+								<ul id="tree" class="ztree"></ul>
 							</div>
 						</div>
 					</div>

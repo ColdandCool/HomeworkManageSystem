@@ -77,7 +77,6 @@
 <script src="${ctxStatic}/custom/js/ztree.select.js"></script>
 <script>
     $(document).ready(function () {
-        //消息提醒
         var msg = '${msg}';
         if (msg != '') {
             showMsg(msg);

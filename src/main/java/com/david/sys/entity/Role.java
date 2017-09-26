@@ -25,9 +25,7 @@ public class Role extends DataEntity<Role> {
     public static enum RoleType {
         /** administrator */
         SECURITY_ROLE("security-role","administrator"),
-        /** 可进行任务分配 */
         ASSIGNMENT("assignment", "Can be assigned to the task"),
-        /** 普通用户 */
         USER("user", "general user");
         private RoleType(String typeName, String typeDesc) {
             this.typeName = typeName;

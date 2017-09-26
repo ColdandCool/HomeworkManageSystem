@@ -100,7 +100,7 @@
                 closeModel(true);//close the window
             }
         }
-        initSelectValue(true);//初始化下拉框的值
+        initSelectValue(true);
     });
 
     function submitComment() {

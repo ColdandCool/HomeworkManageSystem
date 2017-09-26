@@ -1,7 +1,7 @@
 package com.david.common;
 
 /**
- * DAO支持类实现
+ * DAO
  * @author David
  */
 public interface IBaseDao {

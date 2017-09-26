@@ -1,4 +1,4 @@
-<!-- 分页工具 -->
+<!-- page util -->
 <%@ page contentType="text/html;charset=UTF-8"%>
 <style>
 	.am-pagination .am-disabled{display: none;}
@@ -12,25 +12,21 @@
 	<li class="<c:if test="${page.hasLastPage}">am-disabled</c:if>"><a href="javascript:page(${page.last});"><i class="am-icon-fast-forward"></i></a></li>
 </ul>
 <script type="text/javascript">
-     //Paging query
      function page(n){
 		$("#pageNo").val(n);
 		$("#searchForm").submit();
      	return false;
      }
 
-	//Sorting method
 	function order(by){
 		var orderBy = $("#orderBy").val();
 		if(orderBy.indexOf(by)>-1){
-			//改变排序规则
 			if(orderBy.indexOf("desc")>-1){
 				$("#orderBy").val(by+" asc");
 			}else{
 				$("#orderBy").val(by+" desc");
 			}
 		}else{
-			//First time to enter
 			$("#orderBy").val(by+" desc");
 		}
 		$("#pageNo").val(0);

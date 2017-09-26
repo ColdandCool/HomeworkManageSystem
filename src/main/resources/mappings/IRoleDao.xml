@@ -38,7 +38,7 @@
 		</if>
 	</select>
 
-	<!-- 获取权限资源ID -->
+	<!-- resour ID -->
 	<select id="getRoles" resultType="com.david.sys.entity.Role">
 		select id,resource_ids as "resourceIdsStr" from sys_role where status='0'and available='1' and id in(
 		<foreach collection="roleIds" item="item" separator=",">
