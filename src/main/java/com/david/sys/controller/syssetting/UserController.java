@@ -217,7 +217,6 @@ public class UserController extends BaseController {
      * @param model
      * @return
      */
-    @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/{id}/changePassword", method = RequestMethod.GET)
     public String showChangePasswordForm(@PathVariable("id") String id, Model model) {
         model.addAttribute("id", id);
@@ -234,7 +233,6 @@ public class UserController extends BaseController {
      * @param redirectAttributes
      * @return
      */
-    @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/{id}/changePassword", method = RequestMethod.POST)
     public String changePassword(@PathVariable("id") String id, String password, String newPassword, RedirectAttributes redirectAttributes) {
         try {
