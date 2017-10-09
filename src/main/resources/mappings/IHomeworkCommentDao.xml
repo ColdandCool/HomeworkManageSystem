@@ -26,6 +26,7 @@
         SELECT
         <include refid="Columns"/>
         FROM back_homework_comment a where a.status ='0' and a.homework_id=#{homeworkId}
+        order by a.create_date DESC
     </select>
 
     <select id="count" resultType="int">
