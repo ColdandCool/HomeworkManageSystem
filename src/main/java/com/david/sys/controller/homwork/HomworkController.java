@@ -81,7 +81,6 @@ public class HomworkController extends BaseController {
     @RequiresPermissions("homework:homework:modify")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Homework homework, RedirectAttributes redirectAttributes) {
-        //LLL 后期需要更改
         homework.setDeadline(DateUtils.parseDate(homework.getDeadlineStr()));
         logger.info("insert into func data is :" + JsonMapper.toJsonString(homework));
         homworkService.save(homework);

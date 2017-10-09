@@ -118,7 +118,7 @@ public class RoleController extends BaseController {
     @RequiresPermissions("sys:role:edit")
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(Role role, int pageNo, int pageSize, RedirectAttributes redirectAttributes) {
-        // lLL
+        // lll
         if (!"1".equals(role.getId())) {
             roleService.delete(role);
             addMessage(redirectAttributes, "Success");

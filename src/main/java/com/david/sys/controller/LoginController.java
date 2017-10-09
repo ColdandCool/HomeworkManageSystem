@@ -106,17 +106,21 @@ public class LoginController extends BaseController {
     /**
      * User registration
      *
-     * @param username username
-     * @param password password
+     * @param username  username
+     * @param password  password
      * @param rpassword password confirm
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(String username, String email, String password, String rpassword, Model model) {
         String url = "register";
-        //To determine whether the password is repeated
-        if (!password.equals(rpassword)) {
+        if (username.contains("& lt;") || username.contains("& gt;")) {
+            addMessage(model, "No <> is allowed in the username");
+            return url;
+        } else if (!password.equals(rpassword)) {
+            //To determine whether the password is repeated
             addMessage(model, "Two passwords are inconsistent");
+            return url;
         } else {
             User user = userService.getUserByUserName(username);
             if (user == null) {
@@ -128,12 +132,12 @@ public class LoginController extends BaseController {
                 passwordHelper.encryptPassword(user);
                 userService.save(user);
                 addMessage(model, "registration success");
-                url = "login";
+                return "login";
             } else {
                 addMessage(model, "Account already exists");
+                return url;
             }
         }
-        return url;
     }
 
     /**

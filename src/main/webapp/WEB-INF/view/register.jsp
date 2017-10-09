@@ -24,13 +24,13 @@
                 </div>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
-                        <input class="color-form-control tpl-form-input" type="text" name="email" required>
+                        <input class="color-form-control tpl-form-input" type="email" name="email" required>
                         <label class="color-form-control-label">email</label>
                     </div>
                 </div>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
-                        <input class="color-form-control tpl-form-input" type="password" name="password" required>
+                        <input class="color-form-control tpl-form-input" type="password" name="password" minlength="6" required>
                         <label class="color-form-control-label">password</label>
                     </div>
                 </div>

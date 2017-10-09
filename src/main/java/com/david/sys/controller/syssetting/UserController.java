@@ -71,7 +71,6 @@ public class UserController extends BaseController {
     @RequiresPermissions("homework:teamuser:view")
     @RequestMapping(value = "/teamuser")
     public String teamuser(Model model, Page<User> page) {
-        //LLL 小组管理人员
         page.setEntity(UserUtils.getLoginUser());
         model.addAttribute("page", page.setList(userService.findTeamUsersPage(page)));
         return "sys/user/list";
