@@ -3,6 +3,7 @@ package com.david.sys.controller;
 import com.david.common.BaseController;
 import com.david.common.ResultVo;
 import com.david.common.spring.SpringMailUtil;
+import com.david.common.utils.RandomUtils;
 import com.david.common.utils.UserUtils;
 import com.david.sys.entity.User;
 import com.david.sys.service.PasswordHelper;
@@ -157,7 +158,7 @@ public class LoginController extends BaseController {
             addMessage(model, "There is no email Account");
             return "forgetpassword";
         }
-        String newPassword = "123456";
+        String newPassword = RandomUtils.randomString(6);
         try {
             userService.changePassword(user, newPassword);
             String context = "the new password is :" + newPassword + ",please log in and change the password!";
