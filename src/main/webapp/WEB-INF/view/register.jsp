@@ -18,7 +18,7 @@
             <form class="am-form tpl-form-line-form" action="${ctx}/register" method="post" data-am-validator>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
-                        <input class="color-form-control tpl-form-input" type="text" name="username" required>
+                        <input class="color-form-control tpl-form-input" type="text" name="username" minlength="6" maxlength="20" required>
                         <label class="color-form-control-label">Account</label>
                     </div>
                 </div>
