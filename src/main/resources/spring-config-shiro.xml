@@ -128,7 +128,7 @@
             <value>
                 /static/** = anon
                 /jcaptcha* = anon
-                ${adminPath}/ajaxLogin = anon
+                ${adminPath}/weather/* = anon
                 ${adminPath}/register = anon
                 ${adminPath}/forgetpassword = anon
                 ${restPath}/api/** = anon,userAccess
