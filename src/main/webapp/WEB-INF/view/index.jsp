@@ -61,7 +61,7 @@
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
               ${empty loginUser.name?loginUser.username:loginUser.name}
           </span>
-                <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')"
+                <a href="#${ctx}/user/${empty loginUser.id?"":loginUser.id}/changePassword" onclick="openModel(false,'${ctx}/user/${empty loginUser.id?"":loginUser.id}/changePassword')"
                    class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> User Setting</a>
             </div>
         </div>

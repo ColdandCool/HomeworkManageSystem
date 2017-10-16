@@ -51,8 +51,7 @@ public class PasswordHelper {
      * @return
      */
     public String getPassword(User user) {
-        String password = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()),
-                hashIterations).toHex();
+        String password = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()), hashIterations).toHex();
         return password;
     }
 

@@ -253,9 +253,8 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
-    public
     @ResponseBody
-    ResultVo changePassword(String newPassword) {
+    public ResultVo changePassword(String newPassword) {
         ResultVo resultVo = null;
         try {
             userService.changePassword(UserUtils.getLoginUser(), newPassword);
