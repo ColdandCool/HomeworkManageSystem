@@ -69,7 +69,7 @@
 										<th>Sort</th>
 										<th>Available</th>
 										<th>Permission</th>
-										<shiro:hasPermission name="sys:resource:edit"><th>操作</th></shiro:hasPermission>
+										<shiro:hasPermission name="sys:resource:edit"><th>operation</th></shiro:hasPermission>
 									</tr>
 									</thead>
 									<tbody>
