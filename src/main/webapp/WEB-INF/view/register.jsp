@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="am-form-group tpl-login-remember-me">
-                    <input id="remember-me" type="checkbox" required>
+                    <input id="remember-me" type="checkbox">
                     <label for="remember-me">
                         I have read and agree <a href="javascript:;">《User Registration Agreement》</a>
                     </label>
