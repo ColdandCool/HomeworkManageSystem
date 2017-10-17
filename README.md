@@ -15,7 +15,7 @@ It is based on Idea + Maven + SSM (Spring+Spring MVC+ MyBatis) + shiro + mysql +
   Environment set up: http://blog.csdn.net/gallenzhang/article/details/51932152
   AmazeUI Introduction (http://amazeui.org/getting-started
 Download: https://github.com/amazeui
-  Cloud host address:
+  Cloud host address:http://13.59.60.98/homework/
 
 Request Flow
 View    ->   controller   ->   service   ->   dao    ->   entity
